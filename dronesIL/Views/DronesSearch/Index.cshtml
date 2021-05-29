@@ -1,0 +1,84 @@
+﻿@model IEnumerable<dronesIL.Models.Drone>
+<style>
+
+    .square-set,
+    .square {
+        border-radius: 15px;
+
+    }
+
+    .square-set {
+        background: darkgrey;
+    }
+
+    .square {
+        position: static;
+        height: 300px;
+        line-height: 40px;
+        text-align: center;
+        width: 30%;
+        border: solid black 1px;
+        display: inline-block;
+        margin-right: 3%;
+        margin-top: 3%;
+    }
+    .tooltiptext{
+        display:none;
+    }
+    .searchInput{
+        width:97%;
+        height:45px;
+    }
+   
+</style>
+<script>
+    function searchKeyPress() {
+        debugger;
+        var foundDrones = 0;
+        var Input = document.getElementById('myInput').value;
+        Input = Input.toUpperCase();
+        var li = document.getElementsByClassName('square square-1');
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("span")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(Input) > -1) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+        if (foundDrones == 0) {
+            document.getElementById("noDrones").style.display = "";
+        }
+
+
+    }
+</script>
+  
+<div>
+
+
+<div id="SearchDiv">
+    <input type="text"  class="searchInput" id="myInput" onkeyup="searchKeyPress()" placeholder="חפש רחפן לפי דגם">
+</div>
+<div>
+    <span id="noDrones" style="display:none;">מצטערים לא מצאנו רחפנים מדגם זה</span>
+</div>
+
+<div style="width:100%">
+    @foreach (Drone d in Model)
+    {
+    <figure class="square square-1" id="droneDiv">
+        <span id="droneName">@d.name</span>
+        <span>@d.price</span>
+        <img  src="@d.imageUrl" />
+        <button>הוסף לסל 
+        <img src="~/svg/addtocartsvg.svg" style="width:30px;margin:8px;"/>
+        </button>
+          <span class="tooltiptext">@d.description</span>
+    </figure>
+    }
+</div>
+</div>

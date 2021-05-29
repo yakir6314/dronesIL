@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חיפוש</a>
                         </li>
                     </ul>
                 </div>
@@ -36,8 +36,14 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container" style="z-index:1;">
             &copy; 2021 - dronesIL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+
+        <div class="footer-opacity">
+            <p style="position:fixed;">הדרך שלך לרחפנים מתחילה אצלינו</p>
+            <br />
+            <p style="position:fixed;">הדרך שלנו לציון 100 מתחילה אצלך</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
