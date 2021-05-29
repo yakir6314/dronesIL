@@ -58,6 +58,8 @@ namespace dronesIL.Controllers
         {
             if (ModelState.IsValid)
             {
+                drone.createDate = DateTime.Now;
+                drone.LastUpdateDate = DateTime.Now;
                 _context.Add(drone);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +99,7 @@ namespace dronesIL.Controllers
             {
                 try
                 {
+                    drone.LastUpdateDate = DateTime.Now;
                     _context.Update(drone);
                     await _context.SaveChangesAsync();
                 }
