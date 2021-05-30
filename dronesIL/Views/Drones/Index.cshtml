@@ -1,53 +1,79 @@
 ﻿@model IEnumerable<dronesIL.Models.Drone>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Drones Table";
 }
+<style>
+    .drones_table {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+</style>
 
-<h1>Index</h1>
+<h1 style="text-align:center">תכולת רחפנים</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a style="text-align" : center; asp-action="Create">הוסף רחפן חדש</a>
 </p>
-<table class="table">
-    <thead>
+<table class="drones_table">
+    <thead class="align-content-lg-center">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.price)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.createDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LastUpdateDate)
             </th>
-            <th></th>
+            <th>
+                פעולות נוספות
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.createDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdateDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdateDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
