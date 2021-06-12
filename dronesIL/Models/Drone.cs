@@ -9,7 +9,7 @@ namespace dronesIL.Models
     public class Drone
     {
         [Key]
-        public int id { get; set; }
+        public int droneId { get; set; }
         public string name { get; set; }
         public decimal price { get; set; }
         public DateTime createDate { get; set; }

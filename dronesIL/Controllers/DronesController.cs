@@ -34,7 +34,7 @@ namespace dronesIL.Controllers
             }
 
             var drone = await _context.Drone
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.droneId == id);
             if (drone == null)
             {
                 return NotFound();
@@ -90,7 +90,7 @@ namespace dronesIL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,name,price,createDate,LastUpdateDate")] Drone drone)
         {
-            if (id != drone.id)
+            if (id != drone.droneId)
             {
                 return NotFound();
             }
@@ -105,7 +105,7 @@ namespace dronesIL.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DroneExists(drone.id))
+                    if (!DroneExists(drone.droneId))
                     {
                         return NotFound();
                     }
@@ -128,7 +128,7 @@ namespace dronesIL.Controllers
             }
 
             var drone = await _context.Drone
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.droneId == id);
             if (drone == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace dronesIL.Controllers
 
         private bool DroneExists(int id)
         {
-            return _context.Drone.Any(e => e.id == id);
+            return _context.Drone.Any(e => e.droneId == id);
         }
     }
 }
