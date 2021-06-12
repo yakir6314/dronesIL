@@ -29,9 +29,6 @@ namespace dronesIL.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Manufacturer")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("createDate")
                         .HasColumnType("datetime2");
 
