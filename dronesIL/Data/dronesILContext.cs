@@ -15,5 +15,7 @@ namespace dronesIL.Data
         }
 
         public DbSet<dronesIL.Models.Drone> Drone { get; set; }
+
+        public DbSet<dronesIL.Models.user> user { get; set; }
     }
 }
