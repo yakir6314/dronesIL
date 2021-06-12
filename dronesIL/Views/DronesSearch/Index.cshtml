@@ -1,5 +1,4 @@
-﻿@using Newtonsoft.Json;
-@model IEnumerable<dronesIL.Models.Drone>
+﻿@model IEnumerable<dronesIL.Models.Drone>
 <style>
 
     .square-set,
@@ -33,9 +32,7 @@
    
 </style>
 <script>
-    var dronesList =@Html.Raw(JsonConvert.SerializeObject(Model));
-    var cart = new Array();
-        function searchKeyPress() {
+    function searchKeyPress() {
         debugger;
         var foundDrones = 0;
         var Input = document.getElementById('myInput').value;
@@ -55,12 +52,8 @@
         if (foundDrones == 0) {
             document.getElementById("noDrones").style.display = "";
         }
-    }
-    function addToCart(droneId) {
-        debugger;
-        var drone = dronesList.find(f => f.id == droneId);
-        cart.push(drone);
-        alert(666);
+
+
     }
 </script>
   
@@ -78,11 +71,10 @@
     @foreach (Drone d in Model)
     {
     <figure class="square square-1" id="droneDiv">
-        <span id="droneID" style="display:none;">@d.id</span>
         <span id="droneName">@d.name</span>
         <span>@d.price</span>
         <img  src="@d.imageUrl" />
-        <button id="@d.id" onclick="addToCart(this.id)">הוסף לסל 
+        <button>הוסף לסל 
         <img src="~/svg/addtocartsvg.svg" style="width:30px;margin:8px;"/>
         </button>
           <span class="tooltiptext">@d.description</span>
