@@ -17,5 +17,6 @@ namespace dronesIL.Models
         public int streetNum { get; set; }
         public decimal sum { get; set; }
         public int orderStatus { get; set; }
+        public List<Drone> drones { get; set; }
     }
 }
