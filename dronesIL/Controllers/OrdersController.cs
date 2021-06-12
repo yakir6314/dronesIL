@@ -10,22 +10,22 @@ using dronesIL.Models;
 
 namespace dronesIL.Controllers
 {
-    public class DronesController : Controller
+    public class OrdersController : Controller
     {
         private readonly dronesILContext _context;
 
-        public DronesController(dronesILContext context)
+        public OrdersController(dronesILContext context)
         {
             _context = context;
         }
 
-        // GET: Drones
+        // GET: Orders
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Drone.ToListAsync());
+            return View(await _context.Order.ToListAsync());
         }
 
-        // GET: Drones/Details/5
+        // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,41 +33,50 @@ namespace dronesIL.Controllers
                 return NotFound();
             }
 
-            var drone = await _context.Drone
-                .FirstOrDefaultAsync(m => m.droneId == id);
-            if (drone == null)
+            var order = await _context.Order
+                .FirstOrDefaultAsync(m => m.orderId == id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return View(drone);
+            return View(order);
         }
 
-        // GET: Drones/Create
+        // GET: Orders/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Drones/Create
+        [HttpPost]
+        public IActionResult goToBasket(List<Drone> drones)
+        {
+            Order order = new Order
+            {
+                drones = drones,
+                sum = drones.Sum(s => s.price)
+            };
+            return PartialView("~/Views/Orders/Create.cshtml", order);
+        }
+
+        // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,name,price,createDate,LastUpdateDate")] Drone drone)
+        public async Task<IActionResult> Create([Bind("orderId,orderDateTime,city,street,streetNum,sum,orderStatus,drones")] Order order)
         {
             if (ModelState.IsValid)
             {
-                drone.createDate = DateTime.Now;
-                drone.LastUpdateDate = DateTime.Now;
-                _context.Add(drone);
+                _context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(drone);
+            return View(order);
         }
 
-        // GET: Drones/Edit/5
+        // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +84,22 @@ namespace dronesIL.Controllers
                 return NotFound();
             }
 
-            var drone = await _context.Drone.FindAsync(id);
-            if (drone == null)
+            var order = await _context.Order.FindAsync(id);
+            if (order == null)
             {
                 return NotFound();
             }
-            return View(drone);
+            return View(order);
         }
 
-        // POST: Drones/Edit/5
+        // POST: Orders/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,name,price,createDate,LastUpdateDate")] Drone drone)
+        public async Task<IActionResult> Edit(int id, [Bind("id,orderDateTime,city,street,streetNum,sum,orderStatus")] Order order)
         {
-            if (id != drone.droneId)
+            if (id != order.orderId)
             {
                 return NotFound();
             }
@@ -99,13 +108,12 @@ namespace dronesIL.Controllers
             {
                 try
                 {
-                    drone.LastUpdateDate = DateTime.Now;
-                    _context.Update(drone);
+                    _context.Update(order);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DroneExists(drone.droneId))
+                    if (!OrderExists(order.orderId))
                     {
                         return NotFound();
                     }
@@ -116,10 +124,10 @@ namespace dronesIL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(drone);
+            return View(order);
         }
 
-        // GET: Drones/Delete/5
+        // GET: Orders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -127,30 +135,30 @@ namespace dronesIL.Controllers
                 return NotFound();
             }
 
-            var drone = await _context.Drone
-                .FirstOrDefaultAsync(m => m.droneId == id);
-            if (drone == null)
+            var order = await _context.Order
+                .FirstOrDefaultAsync(m => m.orderId == id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return View(drone);
+            return View(order);
         }
 
-        // POST: Drones/Delete/5
+        // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var drone = await _context.Drone.FindAsync(id);
-            _context.Drone.Remove(drone);
+            var order = await _context.Order.FindAsync(id);
+            _context.Order.Remove(order);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DroneExists(int id)
+        private bool OrderExists(int id)
         {
-            return _context.Drone.Any(e => e.droneId == id);
+            return _context.Order.Any(e => e.orderId == id);
         }
     }
 }

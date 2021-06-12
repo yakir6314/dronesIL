@@ -1,4 +1,25 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
 
-// Write your JavaScript code.
+
+function goToBasket() {
+    var cart;
+    var stored = localStorage['cart'];
+    if (stored) {
+        cart = JSON.parse(stored);
+    }
+    else {
+        cart = new Array();
+    }
+    $.post("/orders/goToBasket", {
+        drones:cart
+    }, function (data, status) {
+        $('.pb-3').empty();
+        $('.pb-3').html(data);
+    });
+}
+function createOrder(a) {
+    debugger;
+}

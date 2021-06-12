@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dronesIL.Data;
 
 namespace dronesIL.Migrations
 {
     [DbContext(typeof(dronesILContext))]
-    partial class dronesILContextModelSnapshot : ModelSnapshot
+    [Migration("20210612163854_changDroneIdName")]
+    partial class changDroneIdName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,15 +43,10 @@ namespace dronesIL.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("orderId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("droneId");
-
-                    b.HasIndex("orderId");
 
                     b.ToTable("Drone");
                 });
@@ -122,17 +119,10 @@ namespace dronesIL.Migrations
                     b.ToTable("user");
                 });
 
-            modelBuilder.Entity("dronesIL.Models.Drone", b =>
-                {
-                    b.HasOne("dronesIL.Models.Order", null)
-                        .WithMany("drones")
-                        .HasForeignKey("orderId");
-                });
-
             modelBuilder.Entity("dronesIL.Models.Order", b =>
                 {
                     b.HasOne("dronesIL.Models.user", "user")
-                        .WithMany("orders")
+                        .WithMany()
                         .HasForeignKey("userId");
                 });
 #pragma warning restore 612, 618

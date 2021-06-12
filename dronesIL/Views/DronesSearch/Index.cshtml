@@ -66,7 +66,7 @@
     }
     function addToCart(droneId) {
         debugger;
-        var selectedDrone = model.find(f => f.id == droneId);
+        var selectedDrone = model.find(f => f.droneId == droneId);
         if (selectedDrone != null) {
             cart.push(selectedDrone);
             localStorage['cart'] = JSON.stringify(cart);
@@ -91,7 +91,7 @@
         <span id="droneName">@d.name</span>
         <span>@d.price</span>
         <img  src="@d.imageUrl" />
-        <button id="@d.id" onclick="addToCart(this.id)">הוסף לסל 
+        <button id="@d.droneId" onclick="addToCart(this.id)">הוסף לסל 
         <img src="~/svg/addtocartsvg.svg" style="width:30px;margin:8px;"/>
         </button>
           <span class="tooltiptext">@d.description</span>
