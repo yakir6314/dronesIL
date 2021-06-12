@@ -66,7 +66,7 @@
     }
     function addToCart(droneId) {
         debugger;
-        var selectedDrone = model.find(f => f.id == droneId);
+        var selectedDrone = model.find(f => f.droneId == droneId);
         if (selectedDrone != null) {
             cart.push(selectedDrone);
             localStorage['cart'] = JSON.stringify(cart);

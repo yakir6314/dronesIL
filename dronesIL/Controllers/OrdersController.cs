@@ -49,12 +49,23 @@ namespace dronesIL.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult goToBasket(List<Drone> drones)
+        {
+            Order order = new Order
+            {
+                drones = drones,
+                sum = drones.Sum(s => s.price)
+            };
+            return PartialView("~/Views/Orders/Create.cshtml", order);
+        }
+
         // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,orderDateTime,city,street,streetNum,sum,orderStatus")] Order order)
+        public async Task<IActionResult> Create([Bind("orderId,orderDateTime,city,street,streetNum,sum,orderStatus,drones")] Order order)
         {
             if (ModelState.IsValid)
             {

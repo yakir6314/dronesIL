@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>סל</h1>
 
 <h4>Order</h4>
 <hr />
@@ -12,11 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="orderDateTime" class="control-label"></label>
-                <input asp-for="orderDateTime" class="form-control" />
-                <span asp-validation-for="orderDateTime" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="city" class="control-label"></label>
                 <input asp-for="city" class="form-control" />
@@ -34,18 +29,32 @@
             </div>
             <div class="form-group">
                 <label asp-for="sum" class="control-label"></label>
-                <input asp-for="sum" class="form-control" />
+                <span asp-for="sum" class="form-control" >@Model.sum</span>
                 <span asp-validation-for="sum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="orderStatus" class="control-label"></label>
-                <input asp-for="orderStatus" class="form-control" />
-                <span asp-validation-for="orderStatus" class="text-danger"></span>
-            </div>
+            </div>    
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+    </div>
+    <div style="margin-right:50%;">
+        <h4>פריטים</h4>
+        @if (Model != null)
+        {
+            if (Model.drones != null)
+            {
+                @foreach (Drone drone in Model.drones)
+                {
+    <div class="form-group">
+        <label for="droneItem">שם</label>
+        <span id="droneName" asp-for="drones" class="control-label">@drone.name</span>
+        <br />
+        <label for="dronePrice">מחיר</label>
+        <span asp-for="dronePrice" class="control-label">@drone.price</span>
+    </div>
+                }
+            }
+        }
     </div>
 </div>
 
