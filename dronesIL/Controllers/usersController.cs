@@ -10,6 +10,7 @@ using dronesIL.Models;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using Xamarin.Essentials;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace dronesIL.Controllers
 {
@@ -57,19 +58,15 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("userId,firstName,lastName,mail,phoneNumber,password,createDate,lastUpdateDate")] user user)
+        public async Task<IActionResult> Create([Bind("userId,firstName,lastName,mail,phoneNumber,password")] user user)
         {
-            //bool except = true;
-            //Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            //Match match = regex.Match(user.mail);
-            //if (match.Success)
-            //    except = true;
-            //else
-            //    except = false;
+            user.createDate = DateTime.Now;
+            user.lastUpdateDate = DateTime.Now;
 
 
-         
-            if (ModelState.IsValid )
+
+
+            if (ModelState.IsValid)
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
@@ -99,8 +96,9 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("userId,firstName,lastName,mail,phoneNumber,password,createDate,lastUpdateDate")] user user)
+        public async Task<IActionResult> Edit(int id, [Bind("userId,firstName,lastName,mail,phoneNumber,password")] user user)
         {
+            user.lastUpdateDate = DateTime.Now;
             if (id != user.userId)
             {
                 return NotFound();
@@ -162,5 +160,6 @@ namespace dronesIL.Controllers
         {
             return _context.user.Any(e => e.userId == id);
         }
+
     }
 }

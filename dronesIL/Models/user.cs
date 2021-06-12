@@ -10,14 +10,25 @@ namespace dronesIL.Models
     {
         [Key]
         public int userId { get; set; }
+        
+        [Required]
+        [RegularExpression(@"^[a-zA-Z\u0590-\u05FF\u200f\u200e ]+$", ErrorMessage = "Invalid Name,try to insert letters in hebrew or english ")]
         public string firstName { get; set; }
-        public string lastName { get; set; }
 
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
+        [Required]
+        [RegularExpression(@"^[a-zA-Z\u0590-\u05FF\u200f\u200e ]+$", ErrorMessage = "Invalid Name,try to insert letters in hebrew or english ")]
+        public string lastName { get; set; }
+        [Required]
+        [RegularExpression(@"([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage ="Invalid Email")]
         public string mail { get; set; }
+        //[RegularExpression(@"^d$", ErrorMessage = "invalid phone number")]
+        [Required]
         public string phoneNumber { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string password { get; set; }
         public DateTime createDate { get; set; }
         public DateTime lastUpdateDate { get; set; }
+
     }
 }
