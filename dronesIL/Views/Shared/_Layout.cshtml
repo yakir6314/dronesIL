@@ -7,61 +7,59 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">dronesIL</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        @if (ViewData["user"] == null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="logging">log in</a>
-                            </li>
-                        }
-                        @if (ViewData["user"] != null)
-                        {
-                            <li class="nav-item">
-                                <span class="nav-link text-dark" asp-area="" >@((ViewData["user"] as user).firstName)</span>
-                            </li>
-                        }
+<style>
+push-left{
+    margin-right: auto;
+}
+    
+</style>
 
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">אתר הרחפנים של ישראל</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">עמוד הבית</a>
+                    </li>
+                    @if (ViewData["user"] == null)
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חיפוש</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="logging">התחבר</a>
                         </li>
+                    }
+                    @if (ViewData["user"] != null)
+                    {
                         <li class="nav-item">
-                            <button onclick="goToBasket()">לסל</button>
+                            <span class="nav-link text-dark" asp-area="" >@((ViewData["user"] as user).firstName)</span>
                         </li>
-                    </ul>
-                </div>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
+                    </li>
+                    <li class="nav-item">
+                        <button onclick="goToBasket()">לסל</button>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container" style="z-index:1;">
-            &copy; 2021 - dronesIL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
 
-        <div class="footer-opacity">
-            <p style="position:fixed;">הדרך שלך לרחפנים מתחילה אצלינו</p>
-            <br />
-            <p style="position:fixed;">הדרך שלנו לציון 100 מתחילה אצלך</p>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
