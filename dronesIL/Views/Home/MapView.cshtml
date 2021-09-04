@@ -1,0 +1,50 @@
+﻿<style>
+    #map {
+        height: 100%;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .mapTag {
+        font-size: 12px;
+        height: 14px;
+        font-weight: 100;
+        margin: 0;
+        margin-right: 30px;
+    }
+</style>
+<script>
+    function initMap() {
+        debugger;
+        map = new google.maps.Map(document.getElementById("mapsDiv"), {
+            center: { lat: 32.045529563351494, lng: 34.805553315631585  },
+            zoom: 10,
+        });
+        var contentString = '<div> <h1 class="mapTag">הבית של יקיר</h1></div>';
+        var uluru = { lat: 32.045529563351494, lng: 34.805553315631585 };
+        var info = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            title: "Hello World!"
+        });
+
+        marker.setMap(map);
+        info.open({
+            anchor: marker,
+            map,
+            shouldFocus: false,
+        });
+    }
+</script>
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYreq0os9tStjgxC99miiabgVWZHDllpM&callback=initMap">
+</script>
+<div id="mapsDiv" style="position:relative;width:1000px;height:1000px;">
+
+
+</div>

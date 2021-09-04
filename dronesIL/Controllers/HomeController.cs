@@ -29,21 +29,34 @@ namespace dronesIL.Controllers
         //}
         public user ValidateUser(string mail, string pass)
         {
-            /*Replace this query of code with you DB code.*/
-            user user = null;
-            user= (from users in _context.user
-                                  where users.mail == mail && users.password == pass
-                                  select users).FirstOrDefault();
-            if (user!=null)
+            try
             {
-                ViewData["user"] = user;
-                return user;
+
+
+                /*Replace this query of code with you DB code.*/
+                user user = null;
+                user = (from users in _context.user
+                        where users.mail == mail && users.password == pass
+                        select users).FirstOrDefault();
+                if (user != null)
+                {
+                    ViewData["user"] = user;
+                    return user;
+                }
+                else
+                {
+                    ViewData["user"] = null;
+                    return null;
+                }
             }
-            else
+            catch(Exception e)
             {
-                ViewData["user"] = null;
                 return null;
             }
+        }
+        public IActionResult MapView()
+        {
+            return View();
         }
 
         public IActionResult Index()

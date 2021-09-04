@@ -28,7 +28,11 @@ namespace dronesIL
             services.AddControllersWithViews();
 
             services.AddDbContext<dronesILContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("dronesILContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("dronesILContext"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure();
+                    }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
