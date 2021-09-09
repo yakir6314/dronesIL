@@ -9,7 +9,7 @@ a.navbar-brand {
   white-space: normal;
   text-align: justify;
   word-break: break-all;
-  justify-content: space-evenly;
+  /*justify-content: space-evenly;*/
 }
 
 /* Provide sufficient contrast against white background */
@@ -25,10 +25,13 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link:hover {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: black;
+  border-color: black;
 }
-
+.navbar.box-shadow{
+  color: #000000;
+  box-shadow: black;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

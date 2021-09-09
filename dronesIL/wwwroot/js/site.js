@@ -23,3 +23,27 @@ function goToBasket() {
 function createOrder(a) {
     debugger;
 }
+function searchKeyPress() {
+    var foundDrones = 0;
+    var Input = document.getElementById('myInput').value;
+    Input = Input.toUpperCase();
+    var li = document.getElementsByClassName('square square-1');
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("span")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(Input) > -1) {
+            li[i].style.display = "";
+            document.getElementById('noDrones').style.display = "none";
+            foundDrones += 1;
+        } else {
+            li[i].style.display = "none";
+        }
+        li[i].style.display = " ";
+        
+    }
+    if (foundDrones == 0 ) {
+        document.getElementById("noDrones").style.display = "";
+    }
+
+
+}
