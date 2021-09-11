@@ -1,13 +1,20 @@
 ﻿<style>
-
+    .Link {
+        color: black;
+        font-size: 25px;
+        text-decoration: underline;
+    }
 </style>
 <script>
 
 </script>
-<div id="Links">
+<div id="Links" style="text-align:right;">
     <ul>
         <li>
-            <a class="nav-link text-light" asp-area="" asp-controller="Drones" asp-action="Create">הוספת מוצר</a>
+            <a class="Link" asp-area="" asp-controller="Drones" asp-action="Index">ניהול רחפנים</a>
+        </li>
+        <li>
+            <a class="Link" asp-area="" asp-controller="Home" asp-action="Reports"> דוחות</a>
         </li>
     </ul>
 </div>
