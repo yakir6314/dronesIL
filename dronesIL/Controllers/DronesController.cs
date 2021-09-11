@@ -55,13 +55,13 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("name,price,description,imagUrl")] Drone drone)
+        public async Task<IActionResult> Create([Bind("name,price,description,imageUrl")] Drone drone)
         {
             if (ModelState.IsValid)
             {
                 drone.createDate = DateTime.Now;
                 drone.LastUpdateDate = DateTime.Now;
-                _context.Add(drone);
+                _context.Drone.Add(drone);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
