@@ -20,6 +20,28 @@ function goToBasket() {
         $('.pb-3').html(data);
     });
 }
+function RemoveFromCart(droneId) {
+    debugger;
+    var drones = localStorage['cart'];
+    drones = JSON.parse(drones);
+    var filtered=[];
+    var removed=[];
+    for (let i = 0; i < drones.length; i++)
+    {
+        if (drones[i].droneId == droneId && removed.length > 0) {
+            filtered.push(drones[i]);
+        }
+        else if (drones[i] == droneId) {
+            removed = drones[i];
+        }
+        else {
+            filtered.push(drones[i]);
+        }
+    }
+    localStorage["cart"] = JSON.stringify(filtered);
+    goToBasket();
+
+}
 function createOrder(a) {
     debugger;
 }

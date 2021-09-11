@@ -3,8 +3,15 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>סל</h1>
+<style>
+    .CartTd{
+        padding-left:35px;
+    }
+    .CartTr{
+        height:60px;
+    }
+</style>
+<h1 style="text-align:center;">סל</h1>
 
 <h4>Order</h4>
 <hr />
@@ -29,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="sum" class="control-label"></label>
-                <span asp-for="sum" class="form-control" >@Model.sum</span>
+                <span asp-for="sum" class="form-control" style="margin-right:0px;" >@Model.sum</span>
                 <span asp-validation-for="sum" class="text-danger"></span>
             </div>    
             <div class="form-group">
@@ -37,22 +44,35 @@
             </div>
         </form>
     </div>
-    <div style="margin-right:50%;">
-        <h4>פריטים</h4>
+    <div style="margin-right:30%;">
+        <h4 style="text-align:center;">פריטים</h4>
         @if (Model != null)
         {
             if (Model.drones != null)
             {
-                @foreach (Drone drone in Model.drones)
-                {
-    <div class="form-group">
-        <label for="droneItem">שם</label>
-        <span id="droneName" asp-for="drones" class="control-label">@drone.name</span>
-        <br />
-        <label for="dronePrice">מחיר</label>
-        <span asp-for="dronePrice" class="control-label">@drone.price</span>
-    </div>
-                }
+    <table style="font-size:23px;">
+        <tr>
+            <td class="CartTd">שם</td>
+            <td class="CartTd">מחיר</td>
+        </tr>
+        @foreach (Drone drone in Model.drones)
+        {
+            <tr class="CartTr">
+                <td class="CartTd">
+                    @drone.name
+                </td>
+                <td class="CartTd">
+                    @drone.price
+                </td>
+                <td class="CartTd">
+                    <button id="RemoveFromCart" onclick="RemoveFromCart(@drone.droneId)">
+                        הסר
+                    </button>
+                </td>
+            </tr>
+        }
+    </table>
+                
             }
         }
     </div>
