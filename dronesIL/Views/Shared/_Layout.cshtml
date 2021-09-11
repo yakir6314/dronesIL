@@ -33,7 +33,7 @@
             success: function (data) {
                 debugger;
                 if (data != null) {
-                    alert("Successfull login.");
+                    alert("התחברת בהצלחה");
                     sessionStorage.setItem('user', JSON.stringify(data));
                     location.reload();
                 } else {
@@ -186,17 +186,17 @@
                                         <form>
                                             <div class="form-group">
                                                 <label for="inputUserName">Username</label>
-                                                <input class="form-control" placeholder="login Username" type="text" id="inputUserName">
+                                                <input class="form-control" placeholder="שם משתמש או אימייל" type="text" id="inputUserName">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">Password</label>
-                                                <input class="form-control" placeholder="login Password" type="password" id="inputPassword">
+                                                <input class="form-control" placeholder="סיסמה" type="password" id="inputPassword">
                                             </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" onclick="ValidateUser()">login</button>
-                                        <button class="btn btn-primary" data-dismiss="modal">close</button>
+                                        <button class="btn btn-primary" onclick="ValidateUser()">התחבר</button>
+                                        <button class="btn btn-primary" data-dismiss="modal">יציאה</button>
                                     </div>
 
                                 </div>
