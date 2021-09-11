@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using dronesIL.Data;
+using LearnASPNETCoreMVC5.Helpers;
 
 namespace dronesIL.Controllers
 {
@@ -40,12 +41,12 @@ namespace dronesIL.Controllers
                         select users).FirstOrDefault();
                 if (user != null)
                 {
-                    ViewData["user"] = user;
+                    SessionHelper.SetObjectAsJson(HttpContext.Session, "user", user);
                     return user;
                 }
                 else
                 {
-                    ViewData["user"] = null;
+                    SessionHelper.SetObjectAsJson(HttpContext.Session, "user", null);
                     return null;
                 }
             }
