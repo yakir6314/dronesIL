@@ -23,17 +23,36 @@
             center: { lat: 32.045529563351494, lng: 34.805553315631585  },
             zoom: 10,
         });
-        var contentString = '<div> <h1 class="mapTag">הבית של יקיר</h1></div>';
+        var contentString = '<div> <h1 class="mapTag">סניף תל אביב</h1></div>';
         var uluru = { lat: 32.045529563351494, lng: 34.805553315631585 };
         var info = new google.maps.InfoWindow({
             content: contentString
         });
         var marker = new google.maps.Marker({
             position: uluru,
-            title: "Hello World!"
+            title: "סניף תל אביב"
         });
 
         marker.setMap(map);
+        info.open({
+            anchor: marker,
+            map,
+            shouldFocus: false,
+        });
+
+
+        contentString = '<div> <h1 class="mapTag">סניף חולון</h1></div>';
+        uluru = { lat: 32.00802859900077, lng: 34.77534317362379 };
+        info = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            title: "סניף חולון"
+        });
+
+        marker.setMap(map);
+
         info.open({
             anchor: marker,
             map,
@@ -44,7 +63,7 @@
 <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYreq0os9tStjgxC99miiabgVWZHDllpM&callback=initMap">
 </script>
-<div id="mapsDiv" style="position:relative;width:1000px;height:1000px;">
+<div id="mapsDiv" style="position:relative;width:1000px;height:750px;">
     
 
 
