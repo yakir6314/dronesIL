@@ -36,8 +36,10 @@
     var model = @Html.Raw(@JsonConvert.SerializeObject(Model));
     var cart;
     var stored = localStorage['cart'];
-    if (stored) {
-        cart = JSON.parse(stored);
+    if (stored != 'null') {
+        if (stored) {
+            cart = JSON.parse(stored);
+        }
     }
     else {
         cart = new Array();

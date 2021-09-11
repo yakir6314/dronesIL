@@ -14,6 +14,7 @@ using helpers.SessionHelper;
 
 namespace dronesIL.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

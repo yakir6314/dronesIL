@@ -71,11 +71,15 @@ namespace dronesIL.Controllers
             if (ModelState.IsValid)
             {
                 order.orderDateTime = DateTime.Now;
-                order.userId = SessionHelper.GetObjectFromJson<user>(HttpContext.Session,"user").userId;
+                user u = SessionHelper.GetObjectFromJson<user>(HttpContext.Session, "user");
+                if (u != null)
+                {
+                    order.userId = u.userId;
+                }
                 _context.Order.Add(order);
                 //_context.Add(order);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Home"); ;
             }
             return View(order);
         }
