@@ -3,35 +3,7 @@
     ViewData["Title"] = "logging ";
 }
 
-<script src="../../Scripts/jquery.js" type="text/javascript"></script>
-<script language="javascript">
-    function ValidateUser() {
-        var mail = $("#email")[0].value;
-        var password = $("#password")[0].value;
-        var url = "/Home/ValidateUser/";
-        $("#btnlogin").val('Plesae wait..');
-        $.ajax({
-            url: url,
-            data: { mail: mail, pass: password },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                if (data != null) {
-                    alert("Successfull login.");
-                        location.reload();
-                } else {
-                    alert("Invalid user id and password.");
-                }
-                $("#txtmail").attr({ 'value': '' });
-                $("#txtpass").attr({ 'value': '' });
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-        $("#btnlogin").val('Login');
-    }
-</script>
+
 @using (Html.BeginForm("Index", "Home"))
 {
 <form>

@@ -55,6 +55,10 @@ namespace dronesIL.Controllers
                 return null;
             }
         }
+        public bool isUserConnected()
+        {
+            return SessionHelper.IsUserConnected(HttpContext.Session);
+        }
         public IActionResult MapView()
         {
             return View();

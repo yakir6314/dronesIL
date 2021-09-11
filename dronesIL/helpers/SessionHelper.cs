@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using dronesIL.Models;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace LearnASPNETCoreMVC5.Helpers
@@ -14,6 +15,14 @@ namespace LearnASPNETCoreMVC5.Helpers
         {
             var value = session.GetString(key);
             return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+        }
+        public static bool IsUserConnected(this ISession session)
+        {
+            if(session.GetString("user")!=null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
