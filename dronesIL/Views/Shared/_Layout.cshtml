@@ -1,7 +1,4 @@
-﻿@using LearnASPNETCoreMVC5.Helpers;
-@using Microsoft.AspNetCore.Http;
-@using dronesIL.Controllers;
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="utf-8" />
@@ -9,234 +6,210 @@
     <title>@ViewData["Title"] - dronesIL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-
+   
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script language="javascript">
-    debugger;
-    $(document).ready(function () {
-        if (sessionStorage.getItem('user') != null) {
-            document.getElementById('btn btn-info btn-lg').style.display = 'none';
-        }
-    });
-    function ValidateUser() {
-        var mail = $("#inputUserName")[0].value;
-        var password = $("#inputPassword")[0].value;
-        var url = "/Home/ValidateUser/";
-        $("#btnlogin").val('Plesae wait..');
-        $.ajax({
-            url: url,
-            data: { mail: mail, pass: password },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                debugger;
-                if (data != null) {
-                    alert("Successfull login.");
-                    sessionStorage.setItem('user', JSON.stringify(data));
-                    location.reload();
-                } else {
-                    alert("Invalid user id and password.");
-                }
-                $("#txtmail").attr({ 'value': '' });
-                $("#txtpass").attr({ 'value': '' });
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-        $("#btnlogin").val('Login');
-    }
-</script>
 <style>
     h2 {
         position: absolute;
         color: black;
     }
-
-
+    
+    
     /* The Modal (background) */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
-
-    footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 100px; /* Height of the footer */
-        ;
+    footer{
+    position: absolute;
+    bottom: 0;
+       width:100%;
+       height:100px;   /* Height of the footer */;
         background-color: black;
         color: white;
         background-position: center;
         display: -webkit-box;
     }
-
+    
     /* Modal Content */
     .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
     }
-
+    
     /* The Close Button */
     .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    button {
+    button{
         margin-inline-end: 10px;
     }
-
-    #myBtn {
+    #myBtn{
         position: center;
         background-color: black;
         color: white;
         text-decoration: underline;
-        border: none;
+        border:none;
     }
-
+        
     span {
         margin: 0 10px;
     }
-
-        span:first-of-type {
-            margin-left: 0;
-        }
-
-        span:last-of-type {
-            margin-right: 0;
-        }
-
-    nav {
-        background-color: black;
-        !important;
-        color: white;
+    
+    span:first-of-type {
+        margin-left: 0;
     }
-
-    header {
+    
+    span:last-of-type {
+        margin-right: 0;
+    }
+    nav {
+        background-color: black;!important;
+        color :white;
+        
+    }
+    header{
         border-bottom-color: black;
     }
 </style>
 
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">אתר הרחפנים של ישראל</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav navbar-right">
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
-                    </li>
-
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">אתר הרחפנים של ישראל</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
+                </li>
+                @if (ViewData["user"] == null)
+                {
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="logging">התחבר</a>
                     </li>
-
+                }
+                @if (ViewData["user"] == null)
+                {
                     <li class="nav-item">
-
-
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="MapView">יצירת קשר</a>
                     </li>
-                </ul>
-                <ul class="navbar-nav mr-auto ">
-                    <span>
-                        <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
-                    </span>
-                    <div>
-                        <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">Login</button>
-                        <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button class="close" data-dismiss="modal">&times;</button>
-                                        <h4 id="LogInButton" class="modal-title">login</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="inputUserName">Username</label>
-                                                <input class="form-control" placeholder="login Username" type="text" id="inputUserName">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword">Password</label>
-                                                <input class="form-control" placeholder="login Password" type="password" id="inputPassword">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" onclick="ValidateUser()">login</button>
-                                        <button class="btn btn-primary" data-dismiss="modal">close</button>
-                                    </div>
+                }
+                @if (ViewData["user"] != null)
+                {
+                    <li class="nav-item">
+                        <span class="nav-link text-light" asp-area="">@((ViewData["user"] as user).firstName)</span>
+                    </li>
+                }
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
+                </li>
+ 
+                <li class="nav-item">
+                    
 
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto ">
+                <span>
+                    <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
+                </span>
+                <div>
+                    <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">Login</button>
+                                <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">login</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="inputUserName">Username</label>
+                                                        <input class="form-control" placeholder="login Username" type="text" id="inputUserName">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputPassword">Password</label>
+                                                        <input class="form-control" placeholder="login Password" type="password" id="inputPassword">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" onclick="ValidateUser()">login</button>
+                                                <button class="btn btn-primary" data-dismiss="modal">close</button>
+                                            </div>
+                    
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+
+                </div>
+                <span>
+                    <form class="form-inline mr-auto">
+                        <div id="SearchDiv">
+                            <input type="text" class="searchInput" id="myInput" onkeyup="searchKeyPress()" onkeydown=" " placeholder="חפש רחפן לפי דגם">
                         </div>
+                        <div>
+                            <span id="noDrones" style="display:none;">מצטערים לא מצאנו רחפנים מדגם זה</span>
+                        </div>
+                    </form>
+                </span>
+                
+               
+               
+            </ul>
+            
 
-                    </div>
-                    <span>
-                        <form class="form-inline mr-auto">
-                            <div id="SearchDiv">
-                                <input type="text" class="searchInput" id="myInput" onkeyup="searchKeyPress()" onkeydown=" " placeholder="חפש רחפן לפי דגם">
-                            </div>
-                            <div>
-                                <span id="noDrones" style="display:none;">מצטערים לא מצאנו רחפנים מדגם זה</span>
-                            </div>
-                        </form>
-                    </span>
+                
 
+            
+        </div>
+    </nav>
+    
+  
+</header>
 
-
-                </ul>
-
-
-
-
-
-            </div>
-        </nav>
-
-
-    </header>
-
-    <div class="container" style="max-width:94%;">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<div class="container" style="max-width:94%;">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
 
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)
 
 
 
@@ -244,7 +217,7 @@
 
 </body>
 <footer class="page-footer font-small ">
-
+   
 
 
 
@@ -263,56 +236,56 @@
             <p>
                 <div class="weatherWidget"></div>
                 <script>
-                    window.weatherWidgetConfig = window.weatherWidgetConfig || [];
-                    window.weatherWidgetConfig.push({
-                        selector: ".weatherWidget",
-                        apiKey: "EZMLDFYE2994242A5TT5XJF58", //Sign up for your personal key
-                        location: "tel aviv,israel", //Enter an address
-                        unitGroup: "metric", //"us" or "metric"
-                        forecastDays: 5, //how many days forecast to show
-                        title: "Tel Aviv ", //optional title to show in the
-                        showTitle: true,
-                        showConditions: true
-                    });
-
-                    (function () {
-                        var d = document, s = d.createElement('script');
-                        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
+                  window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+                  window.weatherWidgetConfig.push({
+                      selector:".weatherWidget",
+                      apiKey:"EZMLDFYE2994242A5TT5XJF58", //Sign up for your personal key
+                      location:"tel aviv,israel", //Enter an address
+                      unitGroup:"metric", //"us" or "metric"
+                      forecastDays:5, //how many days forecast to show
+                      title:"Tel Aviv ", //optional title to show in the 
+                      showTitle:true, 
+                      showConditions:true
+                  });
+                 
+                  (function() {
+                  var d = document, s = d.createElement('script');
+                  s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                  })();
+               </script>
             </p>
         </div>
 
     </div>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
     </script>
 
 
