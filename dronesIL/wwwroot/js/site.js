@@ -32,7 +32,7 @@ function RemoveFromCart(droneId) {
             filtered.push(drones[i]);
         }
         else if (drones[i].droneId == droneId) {
-            removed = drones[i];
+            removed.push(drones[i]);
         }
         else {
             filtered.push(drones[i]);
