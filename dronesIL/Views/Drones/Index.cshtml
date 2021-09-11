@@ -4,16 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>רחפנים במלאי</h1>
+<h1>Drones in stock</h1>
 
 <p>
-    <a asp-action="Create"> הוסף רחפן למלאי</a>
+    <a asp-action="Create"> Add new drone  </a>
 </p>
-<table class="table">
+<table class="table" style="text-align:center">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.name)
+                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.price)
