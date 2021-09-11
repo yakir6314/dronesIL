@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -54,7 +55,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,name,price,createDate,LastUpdateDate")] Drone drone)
+        public async Task<IActionResult> Create([Bind("name,price,description,imagUrl")] Drone drone)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +89,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,name,price,createDate,LastUpdateDate")] Drone drone)
+        public async Task<IActionResult> Edit(int id, [Bind("droneId,name,price,description,imagUrl")] Drone drone)
         {
             if (id != drone.droneId)
             {
