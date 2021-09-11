@@ -1,12 +1,60 @@
-﻿
-<script src="https://d3js.org/d3.v7.min.js"></script>
+﻿<script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3-scale.v3.min.js" charset="utf-8"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    var daysReport = $.get("/Home/GetDaysReport",
 
-        function (data) {
-            debugger;
-            return data;
+<style>
+    .container {
+        width: 250px;
+        height: 300px;
+        border: 1px solid #720570;
+    }
+
+    .bar {
+        fill: #720570;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        daysReport =  [];
+        $.ajax({
+            url: "/Home/GetDaysReport",
+            method: "GET",
+            success: function (response) {
+                var Arry = JSON.parse(response);
+                console.log(Arry);
+                daysReport = Arry;
+                console.log(daysReport);
+            },
+            async: false
         });
+
+
+        const xScale = d3.scaleBand().domain(daysReport.map(dataPoint => dataPoint.name)).rangeRound([0, 250]).padding(0.1);
+        const yScale = d3.scaleLinear().domain([0, 500]).range([300, 0]);
+
+
+        const container = d3.select('svg')
+            .classed('container', true);
+
+        const bars = container.selectAll('.bar')
+            .data(daysReport)
+            .enter()
+            .append('rect')
+            .classed('bar', true)
+            .attr('width', xScale.bandwidth())
+            .attr('height', data => 300 - yScale(data.value/100))
+            .attr('x', data => xScale(data.name))
+            .attr('y', data => yScale(data.value / 100));
+
+        
+
+
+    });
+    
+
 </script>
+<svg>
+
+</svg>
+
 
