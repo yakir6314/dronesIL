@@ -11,13 +11,16 @@
     .square-set {
         background: darkgrey;
     }
+    img{
+        max-width:250px;
+    }
 
     .square {
         position: static;
-        height: 300px;
+        height: 365px;
         line-height: 40px;
         text-align: center;
-        width: 30%;
+        width: 34%;
         border: solid black 1px;
         display: inline-block;
         margin-right: 3%;
@@ -73,6 +76,7 @@
                 <span>@d.price</span>
 
                 <img src="@d.imageUrl" />
+                <br />
                 <button id="@d.droneId" onclick="addToCart(this.id)">
                     הוסף לסל
                     <img src="~/svg/addtocartsvg.svg" style="width:30px;margin:8px;" />
