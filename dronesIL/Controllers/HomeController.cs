@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using dronesIL.Data;
-using LearnASPNETCoreMVC5.Helpers;
+using helpers.SessionHelper;
 
 namespace dronesIL.Controllers
 {

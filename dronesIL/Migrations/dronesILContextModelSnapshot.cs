@@ -84,8 +84,6 @@ namespace dronesIL.Migrations
 
                     b.HasKey("orderId");
 
-                    b.HasIndex("userId");
-
                     b.ToTable("Order");
                 });
 
@@ -132,13 +130,6 @@ namespace dronesIL.Migrations
                     b.HasOne("dronesIL.Models.Order", null)
                         .WithMany("drones")
                         .HasForeignKey("orderId");
-                });
-
-            modelBuilder.Entity("dronesIL.Models.Order", b =>
-                {
-                    b.HasOne("dronesIL.Models.user", "user")
-                        .WithMany("orders")
-                        .HasForeignKey("userId");
                 });
 #pragma warning restore 612, 618
         }

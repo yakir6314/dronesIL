@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace LearnASPNETCoreMVC5.Helpers
+namespace helpers.SessionHelper
 {
     public static class SessionHelper
     {
@@ -23,6 +23,10 @@ namespace LearnASPNETCoreMVC5.Helpers
                 return true;
             }
             return false;
+        }
+        public static string GetStringFromSession(this ISession session, string key)
+        {
+            return session.GetString(key);
         }
     }
 }

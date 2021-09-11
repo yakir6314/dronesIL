@@ -10,8 +10,8 @@ using dronesIL.Data;
 namespace dronesIL.Migrations
 {
     [DbContext(typeof(dronesILContext))]
-    [Migration("20210612161832_addorders")]
-    partial class addorders
+    [Migration("20210911141044_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace dronesIL.Migrations
 
             modelBuilder.Entity("dronesIL.Models.Drone", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("droneId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -43,17 +43,22 @@ namespace dronesIL.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("orderId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("id");
+                    b.HasKey("droneId");
+
+                    b.HasIndex("orderId");
 
                     b.ToTable("Drone");
                 });
 
             modelBuilder.Entity("dronesIL.Models.Order", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("orderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -79,9 +84,7 @@ namespace dronesIL.Migrations
                     b.Property<int?>("userId")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
-
-                    b.HasIndex("userId");
+                    b.HasKey("orderId");
 
                     b.ToTable("Order");
                 });
@@ -97,21 +100,26 @@ namespace dronesIL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("firstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("lastUpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("mail")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("userId");
@@ -119,11 +127,11 @@ namespace dronesIL.Migrations
                     b.ToTable("user");
                 });
 
-            modelBuilder.Entity("dronesIL.Models.Order", b =>
+            modelBuilder.Entity("dronesIL.Models.Drone", b =>
                 {
-                    b.HasOne("dronesIL.Models.user", "user")
-                        .WithMany()
-                        .HasForeignKey("userId");
+                    b.HasOne("dronesIL.Models.Order", null)
+                        .WithMany("drones")
+                        .HasForeignKey("orderId");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,7 +11,7 @@ namespace dronesIL.Models
         [Key]
         public int orderId { get; set; }
         public DateTime orderDateTime { get; set; }
-        public user user { get; set; }
+        public int? userId { get; set; }
         public string city { get; set; }
         public string street { get; set; }
         public int streetNum { get; set; }

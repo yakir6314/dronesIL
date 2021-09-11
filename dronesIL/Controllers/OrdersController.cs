@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using dronesIL.Data;
 using dronesIL.Models;
+using helpers.SessionHelper;
 
 namespace dronesIL.Controllers
 {
@@ -69,7 +70,10 @@ namespace dronesIL.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
+                order.orderDateTime = DateTime.Now;
+                order.userId = SessionHelper.GetObjectFromJson<user>(HttpContext.Session,"user").userId;
+                _context.Order.Add(order);
+                //_context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
