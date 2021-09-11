@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dronesIL.Data;
 using helpers.SessionHelper;
+using Newtonsoft.Json;
 
 namespace dronesIL.Controllers
 {
@@ -77,7 +78,15 @@ namespace dronesIL.Controllers
         }
         public IActionResult Reports()
         {
+           
             return View();
+        }
+        [HttpGet]
+        public string GetDaysReport()
+        {
+            List<Order> orders = _context.Order.ToList();
+            var groupedOrders = orders.GroupBy(g => g.orderDateTime.Date, v => v).Select(s => new  { date = s.Key, sum = s.Sum(su => su.sum) }).ToList();
+            return JsonConvert.SerializeObject(groupedOrders);
         }
 
         public IActionResult Index()

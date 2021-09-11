@@ -28,8 +28,12 @@
     $('#OrderForm').submit(function () {
         debugger;
         localStorage['cart'] = null;
+        var sum =@Model.sum;
+        $('#sum').val(sum.toFixed(2));
+        console.log($('#sum').val());
         return true; // return false to cancel form action
     });
+
 </script>
 <h1 style="text-align:center;">סל הקניות שלי</h1>
 
@@ -40,26 +44,26 @@
     <hr/>
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Create" id="OrderForm">
+            <form asp-action="Create" id="OrderForm" name="OrderForm">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="city" class="control-label"></label>
-                    <input asp-for="city" class="form-control"/>
+                    <input id="city" asp-for="city" class="form-control"/>
                     <span asp-validation-for="city" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="street" class="control-label"></label>
-                    <input asp-for="street" class="form-control"/>
+                    <input id="street" asp-for="street" class="form-control"/>
                     <span asp-validation-for="street" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="streetNum" class="control-label"></label>
-                    <input asp-for="streetNum" class="form-control"/>
+                    <input id="streetNum" asp-for="streetNum" class="form-control"/>
                     <span asp-validation-for="streetNum" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="sum" class="control-label"></label>
-                    <span asp-for="sum" class="form-control" style="margin-right:0px;">@Model.sum</span>
+                    <input id="sum" asp-for="sum" value="@Model.sum" disabled="disabled" class="form-control" style="margin-right:0px;"/>
                     <span asp-validation-for="sum" class="text-danger"></span>
                 </div>
                 <div class="form-group">
