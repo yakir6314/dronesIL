@@ -75,6 +75,10 @@ namespace dronesIL.Controllers
                 return View();
             }
         }
+        public IActionResult Reports()
+        {
+            return View();
+        }
 
         public IActionResult Index()
         {
