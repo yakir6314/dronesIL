@@ -14,6 +14,9 @@
     $(document).ready(function () {
         if (sessionStorage.getItem('user') != null) {
             document.getElementById('btn btn-info btn-lg').style.display = 'none';
+            document.getElementById('btn btn-info btn-rg').style.display = 'none';
+            document.getElementById('adminButton').style.display = 'block';
+
         }
         $("#regContent").load('@Url.Action("Create", "Users")');
     });
@@ -148,20 +151,14 @@
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item active">
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
-                </li>
+                </li> 
+                    <li class="nav-item" >
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
+                    </li>
+                <li class="nav-item" style="display:none;" id="adminButton">
+                    <a class="nav-link text-light" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
 
-                @if (ViewData["user"] == null)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="MapView">יצירת קשר</a>
-                    </li>
-                }
-                @if (ViewData["user"] != null)
-                {
-                    <li class="nav-item">
-                        <span class="nav-link text-light" asp-area="">@((ViewData["user"] as user).firstName)</span>
-                    </li>
-                }
+                </li>
                 
                 <li class="nav-item">
                     <a class="nav-link text-light" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>

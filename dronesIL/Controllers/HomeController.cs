@@ -60,9 +60,20 @@ namespace dronesIL.Controllers
         {
             return SessionHelper.IsUserConnected(HttpContext.Session);
         }
-        public IActionResult MapView()
+        public IActionResult ContactUs()
         {
             return View();
+        }
+        public IActionResult admin()
+        {
+            if (!SessionHelper.IsUserConnected(HttpContext.Session))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Index()
