@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using dronesIL.Data;
 using dronesIL.Models;
 using helpers.SessionHelper;
+using Newtonsoft.Json.Linq;
 
 namespace dronesIL.Controllers
 {
@@ -56,7 +57,7 @@ namespace dronesIL.Controllers
             Order order = new Order
             {
                 drones = drones,
-                sum = drones.Sum(s => s.price)
+                Sum = drones.Sum(s => s.price)
             };
             return PartialView("~/Views/Orders/Create.cshtml", order);
         }

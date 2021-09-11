@@ -15,7 +15,7 @@ namespace dronesIL.Models
         public string city { get; set; }
         public string street { get; set; }
         public int streetNum { get; set; }
-        public decimal sum { get; set; }
+        public decimal Sum { get; set; }
         public int orderStatus { get; set; }
         public List<Drone> drones { get; set; }
     }

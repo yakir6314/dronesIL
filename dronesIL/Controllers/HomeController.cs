@@ -85,7 +85,7 @@ namespace dronesIL.Controllers
         public string GetDaysReport()
         {
             List<Order> orders = _context.Order.ToList();
-            var groupedOrders = orders.GroupBy(g => g.orderDateTime.Date, v => v).Select(s => new  { date = s.Key, sum = s.Sum(su => su.sum) }).ToList();
+            var groupedOrders = orders.GroupBy(g => g.orderDateTime.Date, v => v).Select(s => new  { date = s.Key, sum = s.Sum(su => su.Sum) }).ToList();
             return JsonConvert.SerializeObject(groupedOrders);
         }
 
