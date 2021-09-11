@@ -34,7 +34,7 @@
                     sessionStorage.setItem('user', JSON.stringify(data));
                     location.reload();
                 } else {
-                    alert("Invalid user id and password.");
+                    alert("שם משתמש או סיסמה לא נכונים");
                 }
                 $("#txtmail").attr({ 'value': '' });
                 $("#txtpass").attr({ 'value': '' });
@@ -177,7 +177,7 @@
                         <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
                     </span>
                     <div>
-                        <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">Login</button>
+                        <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">התחבר</button>
                         <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
                             <div class="modal-dialog">
                                 <div class="modal-content" >
@@ -205,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">register</button>
+                        <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">הרשמה לאתר</button>
                         <div class="modal" tabindex="2"  id="RegisterModal" style="z-index:1041;">
                             <div class="modal-dialog" style="max-width:100%;">
                                 <div id="regContent" class="modal-content">
