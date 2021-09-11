@@ -8,14 +8,19 @@
     .label{
         color:black;
     }
+    .col-md-4{
+        position: center;
+    }
+    h1 {
+        color: black;
+    }
 </style>
 
-<h1>Create</h1>
+<h1>Register to DronesIL</h1>
 
-<h4>user</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+
+    <div class="col-md-8 mx-auto">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -50,7 +55,7 @@
             </div>
         </form>
     </div>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

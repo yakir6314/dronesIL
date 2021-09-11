@@ -149,12 +149,7 @@
                 <li class="nav-item active">
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                 </li>
-                @if (ViewData["user"] == null)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="logging">התחבר</a>
-                    </li>
-                }
+
                 @if (ViewData["user"] == null)
                 {
                     <li class="nav-item">
