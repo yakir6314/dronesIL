@@ -5831,7 +5831,7 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-  position: fixed;
+  
   top: 0;
   left: 0;
   z-index: 1040;
@@ -5845,7 +5845,7 @@ a.close.disabled {
 }
 
 .modal-backdrop.show {
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .modal-header {
