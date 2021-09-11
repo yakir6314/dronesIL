@@ -22,72 +22,82 @@
         return true; // return false to cancel form action
     });
 </script>
-<h1 style="text-align:center;">סל</h1>
 
-<h4>Order</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" id="OrderForm">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="city" class="control-label"></label>
-                <input asp-for="city" class="form-control" />
-                <span asp-validation-for="city" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="street" class="control-label"></label>
-                <input asp-for="street" class="form-control" />
-                <span asp-validation-for="street" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="streetNum" class="control-label"></label>
-                <input asp-for="streetNum" class="form-control" />
-                <span asp-validation-for="streetNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="sum" class="control-label"></label>
-                <span asp-for="sum" class="form-control" style="margin-right:0px;" >@Model.sum</span>
-                <span asp-validation-for="sum" class="text-danger"></span>
-            </div>    
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-    <div style="margin-right:30%;">
-        <h4 style="text-align:center;">פריטים</h4>
-        @if (Model != null)
-        {
-            if (Model.drones != null)
+
+@if (this.Model.drones.Count != 0)
+{
+    <h1 style="text-align:center;">סל</h1>
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" id="OrderForm">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="city" class="control-label"></label>
+                    <input asp-for="city" class="form-control"/>
+                    <span asp-validation-for="city" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="street" class="control-label"></label>
+                    <input asp-for="street" class="form-control"/>
+                    <span asp-validation-for="street" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="streetNum" class="control-label"></label>
+                    <input asp-for="streetNum" class="form-control"/>
+                    <span asp-validation-for="streetNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="sum" class="control-label"></label>
+                    <span asp-for="sum" class="form-control" style="margin-right:0px;">@Model.sum</span>
+                    <span asp-validation-for="sum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+        <div style="margin-right:30%;">
+            <h4 style="text-align:center;">פריטים</h4>
+            @if (Model != null)
             {
-    <table style="font-size:23px;">
-        <tr>
-            <td class="CartTd">שם</td>
-            <td class="CartTd">מחיר</td>
-        </tr>
-        @foreach (Drone drone in Model.drones)
-        {
-            <tr class="CartTr">
-                <td class="CartTd">
-                    @drone.name
-                </td>
-                <td class="CartTd">
-                    @drone.price
-                </td>
-                <td class="CartTd">
-                    <button id="RemoveFromCart" onclick="RemoveFromCart(@drone.droneId)">
-                        הסר
-                    </button>
-                </td>
-            </tr>
-        }
-    </table>
-                
+                if (Model.drones != null)
+                {
+                    <table style="font-size:23px;">
+                        <tr>
+                            <td class="CartTd">שם</td>
+                            <td class="CartTd">מחיר</td>
+                        </tr>
+                        @foreach (Drone drone in Model.drones)
+                        {
+                            <tr class="CartTr">
+                                <td class="CartTd">
+                                    @drone.name
+                                </td>
+                                <td class="CartTd">
+                                    @drone.price
+                                </td>
+                                <td class="CartTd">
+                                    <button id="RemoveFromCart" onclick="RemoveFromCart(@drone.droneId)">
+                                        הסר
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <a style="text-decoration: underline">   @Model.drones.Count פריטים בסל זה </a> 
+
+                }
             }
-        }
+        </div>
     </div>
-</div>
+}
+else
+{
+    <h1 style="text-align:center;">הסל ריק</h1>
+    <div style="text-align: center"> <a style="color: red; text-decoration:blink"> עדיין לא בחרת רחפן ? <a asp-controller="DronesSearch" asp-action="Index">לחץ כאן ותתחיל בקניות  </a>
+        </a></div>
+    }
 
 <div>
     <a asp-action="Index">Back to List</a>
