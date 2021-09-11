@@ -4,11 +4,20 @@
     ViewData["Title"] = "Create";
 }
 <style>
+
     .CartTd{
         padding-left:35px;
     }
     .CartTr{
         height:60px;
+    }
+    .RemoveFromCart{
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    }
+    button :hover{
+    background-color:#4095c6;
     }
 </style>
 <script>
@@ -54,7 +63,7 @@
                     <span asp-validation-for="sum" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary"/>
+                    <input type="submit" value="אישור הזמנה" class="btn btn-primary"/>
                 </div>
             </form>
         </div>
@@ -64,9 +73,9 @@
             {
                 if (Model.drones != null)
                 {
-                    <table style="font-size:23px;">
+                    <table >
                         <tr>
-                            <td class="CartTd">שם</td>
+                            <td class="CartTd" style="text-align: center; text-decoration: underline">שם</td>
                             <td class="CartTd">מחיר</td>
                         </tr>
                         @foreach (Drone drone in Model.drones)
@@ -79,7 +88,7 @@
                                     @drone.price
                                 </td>
                                 <td class="CartTd">
-                                    <button id="RemoveFromCart" onclick="RemoveFromCart(@drone.droneId)">
+                                    <button class="RemoveFromCart" id="RemoveFromCart"   onclick="RemoveFromCart(@drone.droneId)">
                                         הסר
                                     </button>
                                 </td>

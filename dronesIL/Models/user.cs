@@ -29,6 +29,7 @@ namespace dronesIL.Models
         public string password { get; set; }
         public DateTime createDate { get; set; }
         public DateTime lastUpdateDate { get; set; }
+        public bool? isAdmin { get; set; }
        
     }
 }
