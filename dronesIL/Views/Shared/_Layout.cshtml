@@ -18,6 +18,7 @@
         if (sessionStorage.getItem('user') != null) {
             document.getElementById('btn btn-info btn-lg').style.display = 'none';
         }
+        $("#regContent").load('@Url.Action("Create", "Users")');
     });
     function ValidateUser() {
         var mail = $("#inputUserName")[0].value;
@@ -177,7 +178,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button class="close" data-dismiss="modal">&times;</button>
-                                        <h4 id="LogInButton" class="modal-title">login</h4>
+                                        <h4 class="modal-title">login</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form>
@@ -198,6 +199,14 @@
 
                                 </div>
                             </div>
+                        </div>
+                        <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">register</button>
+                        <div class="modal" tabindex="2"  id="RegisterModal" style="z-index:1041;">
+                            <div class="modal-dialog">
+                                <div id="regContent" class="modal-content">
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -302,7 +311,7 @@
             modal.style.display = "block";
         }
 
-        // When the user clicks on <span> (x), close the modal
+        // WhUrln the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
         }

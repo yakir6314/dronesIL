@@ -50,7 +50,7 @@ namespace dronesIL.Controllers
         // GET: users/Create
         public IActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: users/Create
