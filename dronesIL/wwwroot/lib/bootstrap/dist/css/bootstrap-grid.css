@@ -2138,6 +2138,7 @@ html {
 .pb-3,
 .py-3 {
   padding-bottom: 1rem !important;
+  margin-left: 50% !important;
 }
 
 .pl-3,

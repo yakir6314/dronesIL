@@ -69,12 +69,15 @@
       overflow: auto; /* Enable scroll if needed */
       background-color: rgb(0,0,0); /* Fallback color */
       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      
+      font-family: Tahoma;
+      
     }
     footer{
-    position: absolute;
+    position:absolute;
     bottom: 0;
        width:100%;
-       height:100px;   /* Height of the footer */;
+          height:60px;   
         background-color: black;
         color: white;
         background-position: center;
@@ -87,7 +90,11 @@
       margin: auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 80%;
+      width: 100%;
+       border-color: black;
+        box-shadow: 10px 10px 20px black;
+        text-align: right;;
+        
     }
     
     /* The Close Button */
@@ -97,6 +104,11 @@
       font-size: 28px;
       font-weight: bold;
     }
+    
+ .modal-header .close{
+     padding: 1rem 1rem;
+     margin: -1rem -1rem -1rem 0;
+ }
     
     .close:hover,
     .close:focus {
@@ -115,6 +127,10 @@
         text-decoration: underline;
         border:none;
     }
+    
+   .modal-header{
+        background-color: aliceblue;
+   }
         
     span {
         margin: 0 10px;
@@ -128,13 +144,25 @@
         margin-right: 0;
     }
     nav {
-        background-color: black;!important;
-        color :white;
+        background-color: white;!important;
+        color :black;;
         
     }
     header{
         border-bottom-color: black;
     }
+    .btn-primary {
+       background-color: #b8daff;
+       color: black;
+       box-shadow: 5px 5px 10px black;
+       
+    }
+    
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  margin-inline: auto;
+}
 </style>
 
 
@@ -150,18 +178,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item active">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                 </li> 
                     <li class="nav-item" >
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
                     </li>
                 <li class="nav-item" style="display:none;" id="adminButton">
-                    <a class="nav-link text-light" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
 
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link text-light" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
                 </li>
  
                 <li class="nav-item">
@@ -180,16 +208,16 @@
                                 <div class="modal-content" >
                                     <div class="modal-header">
                                         <button class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">login</h4>
+                                        <h4 class="modal-title">התחברות</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form>
                                             <div class="form-group">
-                                                <label for="inputUserName">Username</label>
+                                                <label for="inputUserName">שם משתמש</label>
                                                 <input class="form-control" placeholder="שם משתמש או אימייל" type="text" id="inputUserName">
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputPassword">Password</label>
+                                                <label for="inputPassword">סיסמה</label>
                                                 <input class="form-control" placeholder="סיסמה" type="password" id="inputPassword">
                                             </div>
                                         </form>
@@ -259,7 +287,7 @@
 
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span id="closeBtn" class="close">&times;</span>
             <h2>נתוני מזג אוויר</h2>
             <p>
                 <div class="weatherWidget"></div>
@@ -296,7 +324,7 @@
         var btn = document.getElementById("myBtn");
 
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementById("closeBtn");
 
         // When the user clicks the button, open the modal
         btn.onclick = function () {
