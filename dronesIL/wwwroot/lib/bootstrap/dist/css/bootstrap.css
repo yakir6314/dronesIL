@@ -4058,6 +4058,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  background-color: white;
 }
 
 .nav-link {
@@ -4330,6 +4331,7 @@ input[type="button"].btn-block {
 @media (max-width: 991.98px) {
   .navbar-expand-lg > .container,
   .navbar-expand-lg > .container-fluid {
+    background-color: white;
     padding-right: 0;
     padding-left: 0;
   }
@@ -4340,11 +4342,13 @@ input[type="button"].btn-block {
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
     -ms-flex-pack: start;
+    background-color: inherit;
     justify-content: flex-start;
   }
   .navbar-expand-lg .navbar-nav {
     -ms-flex-direction: row;
     flex-direction: row;
+  
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
@@ -4492,7 +4496,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-light .navbar-text {
-  color: rgb(255, 255, 255);
+  color: rgb(14, 11, 11);
 }
 
 .navbar-light .navbar-text a {
@@ -5870,6 +5874,7 @@ a.close.disabled {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+  margin-inline: auto;
 }
 
 .modal-body {
@@ -8149,6 +8154,7 @@ button.bg-dark:focus {
 .pb-3,
 .py-3 {
   padding-bottom: 1rem !important;
+  margin-left: 50%;
 }
 
 .pl-3,

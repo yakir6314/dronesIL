@@ -4,12 +4,17 @@
     ViewData["Title"] = "Create";
 }
 <style>
-
+.row{
+    background-color: whitesmoke;
+    width: 80%;
+}
     .CartTd{
         padding-left:35px;
+        text-align: center;
     }
     .CartTr{
         height:60px;
+        text-align: center;
     }
     .RemoveFromCart{
     color: #fff;
@@ -98,7 +103,7 @@
                             </tr>
                         }
                     </table>
-                    <a style="text-decoration: underline">   @Model.drones.Count פריטים בסל זה </a> 
+                    <a style="text-decoration: underline; text-align: center;">   @Model.drones.Count פריטים בסל זה </a> 
 
                 }
             }

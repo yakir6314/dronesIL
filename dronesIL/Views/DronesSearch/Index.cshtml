@@ -58,17 +58,17 @@
         }
     }
 </script>
-  
+  <div style="width:100%; position: center;">
 <div>
 
-    <div id="SearchDiv">
+    <div id="SearchDiv" style="padding: 20px">
         <input type="text"  class="searchInput" id="myInput" onkeyup="searchKeyPress()" placeholder="חיפוש רחפן לפי דגם">
     </div>
     <div>
         <span id="noDrones" style="display:none;">מצטערים לא מצאנו רחפנים מדגם זה</span>
     </div>
 
-    <div style="width:100%">
+    
         @foreach (Drone d in Model)
         {
             <figure class="square square-1" id="droneDiv">
