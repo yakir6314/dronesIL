@@ -50,6 +50,14 @@ namespace dronesIL.Controllers
         {
             return View();
         }
+        
+        [HttpGet]
+        public List<Order> GetAllOrdersForMaps()
+        {
+            List<Order> addresses = _context.Order.OrderByDescending(o=>o.orderId).Take(10).ToList();
+            return addresses;
+
+        }
 
         [HttpPost]
         public IActionResult goToBasket(List<Drone> drones)
