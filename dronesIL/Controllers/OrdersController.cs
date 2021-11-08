@@ -22,6 +22,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: Orders
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Order.ToListAsync());
@@ -46,6 +47,8 @@ namespace dronesIL.Controllers
         }
 
         // GET: Orders/Create
+
+        [RequireAuthentication(true)]
         public IActionResult Create()
         {
             return View();
@@ -93,6 +96,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: Orders/Edit/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,6 +117,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Edit(int id, [Bind("id,orderDateTime,city,street,streetNum,sum,orderStatus")] Order order)
         {
             if (id != order.orderId)
@@ -144,6 +149,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: Orders/Delete/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -164,6 +170,7 @@ namespace dronesIL.Controllers
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var order = await _context.Order.FindAsync(id);
@@ -171,7 +178,7 @@ namespace dronesIL.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        [RequireAuthentication(true)]
         private bool OrderExists(int id)
         {
             return _context.Order.Any(e => e.orderId == id);

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using dronesIL.Data;
 using dronesIL.Models;
+using helpers.SessionHelper;
 
 namespace dronesIL.Controllers
 {
@@ -45,6 +46,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: Drones/Create
+        [RequireAuthentication(true)]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +57,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Create([Bind("name,price,description,imageUrl")] Drone drone)
         {
             if (ModelState.IsValid)
@@ -69,6 +72,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: Drones/Edit/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,6 +93,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Edit(int id, [Bind("droneId,name,price,description,imagUrl")] Drone drone)
         {
             if (id != drone.droneId)
@@ -121,6 +126,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: Drones/Delete/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,6 +147,7 @@ namespace dronesIL.Controllers
         // POST: Drones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var drone = await _context.Drone.FindAsync(id);

@@ -11,6 +11,7 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using Xamarin.Essentials;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using helpers.SessionHelper;
 
 namespace dronesIL.Controllers
 {
@@ -24,12 +25,14 @@ namespace dronesIL.Controllers
         }
 
         // GET: users
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Index()
         {
             return View(await _context.user.ToListAsync());
         }
 
         // GET: users/Details/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,6 +51,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: users/Create
+        [RequireAuthentication(true)]
         public IActionResult Create()
         {
             return PartialView();
@@ -58,6 +62,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Create([Bind("userId,firstName,lastName,mail,phoneNumber,password")] user user)
         {
             user.createDate = DateTime.Now;
@@ -76,6 +81,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: users/Edit/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,6 +102,7 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Edit(int id, [Bind("userId,firstName,lastName,mail,phoneNumber,password")] user user)
         {
             user.lastUpdateDate = DateTime.Now;
@@ -128,6 +135,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: users/Delete/5
+        [RequireAuthentication(true)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -148,6 +156,7 @@ namespace dronesIL.Controllers
         // POST: users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [RequireAuthentication(true)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var user = await _context.user.FindAsync(id);
@@ -156,6 +165,7 @@ namespace dronesIL.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [RequireAuthentication(true)]
         private bool userExists(int id)
         {
             return _context.user.Any(e => e.userId == id);
