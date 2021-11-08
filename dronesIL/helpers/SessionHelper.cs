@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
+using System;
 
 namespace helpers.SessionHelper
 {
@@ -16,6 +17,17 @@ namespace helpers.SessionHelper
         {
             var value = session.GetString(key);
             return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+        }
+        public static void connectUser(this user user, ISession session)
+        {
+            try
+            {
+                SetObjectAsJson(session, "user", user);
+            }
+            catch(Exception up)
+            {
+                throw up;
+            }
         }
         public static bool IsUserConnected(this ISession session)
         {

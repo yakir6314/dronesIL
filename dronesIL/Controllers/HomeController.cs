@@ -41,47 +41,32 @@ namespace dronesIL.Controllers
                 user = (from users in _context.user
                         where users.mail == mail && users.password == pass
                         select users).FirstOrDefault();
-                if (user != null)
-                {
-                    SessionHelper.SetObjectAsJson(HttpContext.Session, "user", user);
-                    return user;
-                }
-                else
-                {
-                    SessionHelper.SetObjectAsJson(HttpContext.Session, "user", null);
-                    return null;
-                }
+                user.connectUser(HttpContext.Session);
+                return user;
             }
             catch(Exception e)
             {
-                return null;
+                throw e;
             }
-        }
-        public bool isUserConnected()
-        {
-            return SessionHelper.IsUserConnected(HttpContext.Session);
         }
         public IActionResult ContactUs()
         {
             return View();
         }
+        [RequireAuthentication(true)]
         public IActionResult admin()
         {
-            if (!SessionHelper.IsUserConnected(HttpContext.Session))
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                return View();
-            }
+            return View();
+            
         }
+        [RequireAuthentication(true)]
         public IActionResult Reports()
         {
            
             return View();
         }
         [HttpGet]
+        [RequireAuthentication(true)]
         public string GetDaysReport()
         {
             List<Order> orders = _context.Order.ToList();
