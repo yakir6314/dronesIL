@@ -8,12 +8,12 @@ namespace helpers.SessionHelper
 {
     public static class SessionHelper
     {
-        public static void SetObjectAsJson(this ISession session, string key, object value)
+        public static void SetObjectAsJsonOnSession(this ISession session, string key, object value)
         {
             session.SetString(key, JsonConvert.SerializeObject(value));
         }
 
-        public static T GetObjectFromJson<T>(this ISession session, string key)
+        public static T GetObjectFromJsoFromSessionn<T>(this ISession session, string key)
         {
             var value = session.GetString(key);
             return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
@@ -22,9 +22,20 @@ namespace helpers.SessionHelper
         {
             try
             {
-                SetObjectAsJson(session, "user", user);
+                SetObjectAsJsonOnSession(session, "user", user);
             }
             catch(Exception up)
+            {
+                throw up;
+            }
+        }
+        public static void DisconnectUser(ISession session)
+        {
+            try
+            {
+                SetObjectAsJsonOnSession(session, "user", null);
+            }
+            catch (Exception up)
             {
                 throw up;
             }
@@ -73,14 +84,14 @@ namespace helpers.SessionHelper
             {
                 if (!SessionHelper.isUserAdmin(filterContext.HttpContext.Session))
                 {
-                    throw new System.Exception("user must be admin");
+                    throw new Exception("user must be admin");
                 }
             }
             else
             {
                 if (!SessionHelper.IsUserConnected(filterContext.HttpContext.Session))
                 {
-                    throw new System.Exception("user must be connected");
+                    throw new Exception("user must be connected");
                 }
             }
 

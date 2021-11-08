@@ -82,7 +82,7 @@ namespace dronesIL.Controllers
             if (ModelState.IsValid)
             {
                 order.orderDateTime = DateTime.Now;
-                user u = SessionHelper.GetObjectFromJson<user>(HttpContext.Session, "user");
+                user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
                 if (u != null)
                 {
                     order.userId = u.userId;
