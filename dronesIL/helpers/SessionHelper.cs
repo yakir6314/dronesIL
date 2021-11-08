@@ -69,7 +69,7 @@ namespace helpers.SessionHelper
     }
     public class RequireAuthenticationAttribute: ActionFilterAttribute
     {
-        public bool isNeedAdmin { get; set; }
+        private bool isNeedAdmin { get; set; }
         public RequireAuthenticationAttribute(bool isAdmin)
         {
             this.isNeedAdmin = isAdmin;
