@@ -5890,19 +5890,18 @@ a.close.disabled {
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: end;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 1rem;
-  border-top: 1px solid #dee2e6;
-  border-bottom-right-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+  border-top: 1px solid #a1bede;
+  margin-inline: initial;
 }
 
 .modal-footer > :not(:first-child) {
-  margin-left: .25rem;
+  margin-left: -3.75rem;
 }
 
 .modal-footer > :not(:last-child) {
-  margin-right: .25rem;
+  margin-right: -0.75rem;
 }
 
 .modal-scrollbar-measure {
