@@ -1,144 +1,7 @@
 ﻿<!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style>
-    h2 {
-        position: absolute;
-        color: black;
-    }
-
-
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-
-        font-family: Tahoma;
-    }
-
-    footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 60px;
-        background-color: black;
-        color: white;
-        background-position: center;
-        display: -webkit-box;
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 100%;
-        border-color: black;
-        box-shadow: 10px 10px 20px black;
-        text-align: right;
-        ;
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .modal-header .close {
-        padding: 1rem 1rem;
-        margin: -1rem -1rem -1rem 0;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    button {
-        margin-inline-end: 10px;
-    }
-
-    #myBtn {
-        position: center;
-        background-color: black;
-        color: white;
-        text-decoration: underline;
-        border: none;
-    }
-
-    .modal-header {
-        background-color: aliceblue;
-    }
-
-    span {
-        margin: 0 10px;
-    }
-
-        span:first-of-type {
-            margin-left: 0;
-        }
-
-        span:last-of-type {
-            margin-right: 0;
-        }
-
-    nav {
-        background-color: white;
-        color: black;
-        
-    }
-
-    header {
-        border-bottom-color: black;
-    }
-
-    .btn-primary {
-        background-color: #b8daff;
-        color: black;
-        box-shadow: 5px 5px 10px black;
-    }
-
-    .modal-title {
-        margin-bottom: 0;
-        line-height: 1.5;
-        margin-inline: auto;
-        background-color: #eff8fe;
-    }
-
-
-    .modal-footer {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        -ms-flex-pack: end;
-        justify-content: center;
-        padding: 1rem;
-        border-top: 1px solid #a1bede;
-        margin-inline: initial;
-    }
-
-    .logo {
-        vertical-align: middle;
-        border-style: none;
-        height: 50px;
-        margin-inline-end: 20px;
-    }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <html lang="he" dir="rtl">
 
 <head>
@@ -147,9 +10,9 @@
     <title>@ViewData["Title"] - dronesIL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 
 
@@ -157,110 +20,110 @@
 
 
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <a href="#" class="navbar-brand">
-            <img class="logo" src="https://c.tenor.com/piEpux8KxmwAAAAi/drone-flying.gif" alt="CoolBrand">
-               <a asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 22px; ">אתר הרחפנים של ישראל</a>
-        </a>
-     
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav navbar-right">
-                <li class="nav-item active">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
-                </li>
-                <li class="nav-item" style="display:none;" id="adminButton">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
-
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
-                </li>
-
-                <li class="nav-item">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a href="#" class="navbar-brand">
+                <img class="logo" src="https://c.tenor.com/piEpux8KxmwAAAAi/drone-flying.gif" alt="CoolBrand">
+                <a asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 22px; ">אתר הרחפנים של ישראל</a>
+            </a>
 
 
-                </li>
-            </ul>
-            <ul class="navbar-nav mr-auto ">
-                <span>
-                    <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
-                </span>
-                <div>
-                    <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">התחבר</button>
-                    <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">התחברות</h4>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
+                    </li>
+                    <li class="nav-item" style="display:none;" id="adminButton">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
+                    </li>
+
+                    <li class="nav-item">
+
+
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto ">
+                    <span>
+                        <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
+                    </span>
+                    <div>
+                        <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">התחבר</button>
+                        <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">התחברות</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="inputUserName">שם משתמש</label>
+                                                <input class="form-control" placeholder="שם משתמש או אימייל" type="text" id="inputUserName">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword">סיסמה</label>
+                                                <input class="form-control" placeholder="סיסמה" type="password" id="inputPassword">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" onclick="ValidateUser()">התחבר</button>
+                                        <button class="btn btn-primary" data-dismiss="modal">יציאה</button>
+                                    </div>
+
                                 </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="inputUserName">שם משתמש</label>
-                                            <input class="form-control" placeholder="שם משתמש או אימייל" type="text" id="inputUserName">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputPassword">סיסמה</label>
-                                            <input class="form-control" placeholder="סיסמה" type="password" id="inputPassword">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" onclick="ValidateUser()">התחבר</button>
-                                    <button class="btn btn-primary" data-dismiss="modal">יציאה</button>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
-                    <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">הרשמה לאתר</button>
-                    <div class="modal" tabindex="2" id="RegisterModal" style="z-index:1041;">
-                        <div class="modal-dialog" style="max-width:100%;">
-                            <div id="regContent" class="modal-content">
+                        <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">הרשמה לאתר</button>
+                        <div class="modal" tabindex="2" id="RegisterModal" style="z-index:1041;">
+                            <div class="modal-dialog" style="max-width:100%;">
+                                <div id="regContent" class="modal-content">
+                                </div>
                             </div>
+
                         </div>
 
                     </div>
 
-                </div>
 
 
-
-            </ul>
-
+                </ul>
 
 
 
 
-        </div>
-    </nav>
-    
-  
-</header>
 
-<div class="container" style="max-width:94%;">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+            </div>
+        </nav>
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@RenderSection("Scripts", required: false)
+    </header>
+
+    <div class="container" style="max-width:94%;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 
 
 
@@ -268,7 +131,7 @@
 
 </body>
 <footer class="page-footer font-small ">
-   
+
 
 
 
@@ -286,7 +149,7 @@
             <h2>נתוני מזג אוויר</h2>
             <p>
                 <div class="weatherWidget"></div>
-                
+
             </p>
         </div>
 

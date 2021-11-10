@@ -10,12 +10,16 @@ $(window).on('load',function() {
 
 $(document).ready(function () {
     if (sessionStorage.getItem('user') != null) {
+        var userObject = JSON.parse(sessionStorage.getItem('user'));
         document.getElementById('btn btn-info btn-lg').style.display = 'none';
         document.getElementById('btn btn-info btn-rg').style.display = 'none';
-        document.getElementById('adminButton').style.display = 'block';
-
+        if (userObject.isAdmin == true) {
+            document.getElementById('adminButton').style.display = 'block';
+        }
     }
-    //$("#regContent").load(@Url.Action("Create", "Users"));
+    //$("#regContent").on('load', function () {
+    //    @Url.Action("Create", "Users") //load partial view here
+    //});
 });
 function ValidateUser() {
     var mail = $("#inputUserName")[0].value;
