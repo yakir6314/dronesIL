@@ -108,4 +108,14 @@ body {
     width: 100%;
     padding: 20px;
 }
+.NoNoNo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+#unautorizedText span {
+    text-align: center;
+    font-size: 30px;
+}
 

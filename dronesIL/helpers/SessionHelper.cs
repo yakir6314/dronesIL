@@ -1,5 +1,6 @@
 ﻿using dronesIL.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 using System;
@@ -84,14 +85,14 @@ namespace helpers.SessionHelper
             {
                 if (!SessionHelper.isUserAdmin(filterContext.HttpContext.Session))
                 {
-                    throw new Exception("user must be admin");
+                    filterContext.Result = new RedirectResult(string.Format("/Home/unAutorized"));
                 }
             }
             else
             {
                 if (!SessionHelper.IsUserConnected(filterContext.HttpContext.Session))
                 {
-                    throw new Exception("user must be connected");
+                    filterContext.Result = new RedirectResult(string.Format("/Home/unAutorized"));
                 }
             }
 

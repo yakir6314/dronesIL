@@ -21,7 +21,6 @@ function goToBasket() {
     });
 }
 function RemoveFromCart(droneId) {
-    debugger;
     var drones = localStorage['cart'];
     drones = JSON.parse(drones);
     var filtered=[];
@@ -43,7 +42,7 @@ function RemoveFromCart(droneId) {
 
 }
 function createOrder(a) {
-    debugger;
+
 }
 function searchKeyPress() {
     var foundDrones = 0;
