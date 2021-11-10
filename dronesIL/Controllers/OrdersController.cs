@@ -85,7 +85,7 @@ namespace dronesIL.Controllers
                 user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
                 if (u != null)
                 {
-                    order.userId = u.userId;
+                    order.user.userId = u.userId;
                 }
                 _context.Order.Add(order);
                 //_context.Add(order);

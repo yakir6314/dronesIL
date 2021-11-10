@@ -30,6 +30,7 @@ namespace dronesIL.Models
         public DateTime createDate { get; set; }
         public DateTime lastUpdateDate { get; set; }
         public bool? isAdmin { get; set; }
+        public ICollection<Order> orders { get; set; }
        
     }
 }
