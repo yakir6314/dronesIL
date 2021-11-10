@@ -77,7 +77,6 @@
     script.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(script);
     $('#OrderForm').submit(function () {
-        debugger;
         localStorage['cart'] = null;
         var sum =@Model.Sum;
         $('#sum').val(sum.toFixed(2));
