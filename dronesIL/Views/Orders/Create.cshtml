@@ -10,7 +10,7 @@
 }
     .CartTd{
         padding-left:35px;
-        text-align: center;
+      
     }
     .CartTr{
         height:60px;
@@ -44,9 +44,10 @@
         -moz-osx-font-smoothing: grayscale;
          box-shadow: 0 2px 10px rgba(0,0,0,.2);
          color: #fff;
+         margin-inline:40%;
          background: #2b96de;
          border-radius: 13px;
-         margin-top: 20%;
+         margin-top: 10%;
 
        }
        
@@ -136,7 +137,7 @@
                                     @drone.name
                                 </td>
                                 <td class="CartTd">
-                                    @drone.price
+                                    @drone.price ש״ח
                                 </td>
                                 <td class="CartTd">
                                     <button class="RemoveFromCart" id="RemoveFromCart"   onclick="RemoveFromCart(@drone.droneId)">
@@ -148,7 +149,7 @@
                     </table>
                     <div id="btn-sum" style="border-color: black ;  ">
                         <p style="text-align: center;">   @Model.drones.Count פריטים בסל זה </p>
-                        <p style=" text-align: center;"> סה״כ בשקלים  @Model.Sum   </p>  
+                        <p style=" text-align: center;"> סה״כ   @Model.Sum ש״ח </p>  
                         
                     </div>
                   

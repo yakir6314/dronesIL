@@ -6,7 +6,9 @@
     <title>@ViewData["Title"] - dronesIL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">   
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script language="javascript">
@@ -49,6 +51,9 @@
         $("#btnlogin").val('Login');
     }
 </script>
+
+
+
 <style>
     h2 {
         position: absolute;
@@ -177,92 +182,105 @@
   border-top: 1px solid #a1bede;
   margin-inline: initial;
 }
-</style>
+.logo{
+    vertical-align: middle;
+    border-style: none;
+    height: 50px;
+    margin-inline-end: 20px;
+}
 
+
+
+</style>
 
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">אתר הרחפנים של ישראל</a>
+        <a href="#" class="navbar-brand">
+            <img class="logo" src="https://i.imgur.com/SdgaJcD.png" alt="CoolBrand">
+               <a asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 22px; ">אתר הרחפנים של ישראל</a>
+        </a>
+     
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item active">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
-                </li> 
-                    <li class="nav-item" >
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
-                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
+                </li>
                 <li class="nav-item" style="display:none;" id="adminButton">
                     <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
 
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
                 </li>
- 
+
                 <li class="nav-item">
-                    
 
-                    </li>
-                </ul>
-                <ul class="navbar-nav mr-auto ">
-                    <span>
-                        <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
-                    </span>
-                    <div>
-                        <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">התחבר</button>
-                        <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
-                            <div class="modal-dialog">
-                                <div class="modal-content" >
-                                    <div class="modal-header">
-                                        <button class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">התחברות</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="inputUserName">שם משתמש</label>
-                                                <input class="form-control" placeholder="שם משתמש או אימייל" type="text" id="inputUserName">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword">סיסמה</label>
-                                                <input class="form-control" placeholder="סיסמה" type="password" id="inputPassword">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" onclick="ValidateUser()">התחבר</button>
-                                        <button class="btn btn-primary" data-dismiss="modal">יציאה</button>
-                                    </div>
 
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto ">
+                <span>
+                    <button class=" button-inline mr-auto " onclick="goToBasket()">לסל הקניות שלי</button>
+                </span>
+                <div>
+                    <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">התחבר</button>
+                    <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">התחברות</h4>
                                 </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="inputUserName">שם משתמש</label>
+                                            <input class="form-control" placeholder="שם משתמש או אימייל" type="text" id="inputUserName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword">סיסמה</label>
+                                            <input class="form-control" placeholder="סיסמה" type="password" id="inputPassword">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" onclick="ValidateUser()">התחבר</button>
+                                    <button class="btn btn-primary" data-dismiss="modal">יציאה</button>
+                                </div>
+
                             </div>
                         </div>
-                        <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">הרשמה לאתר</button>
-                        <div class="modal" tabindex="2"  id="RegisterModal" style="z-index:1041;">
-                            <div class="modal-dialog" style="max-width:100%;">
-                                <div id="regContent" class="modal-content">
-                                </div>
+                    </div>
+                    <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">הרשמה לאתר</button>
+                    <div class="modal" tabindex="2" id="RegisterModal" style="z-index:1041;">
+                        <div class="modal-dialog" style="max-width:100%;">
+                            <div id="regContent" class="modal-content">
                             </div>
-
                         </div>
+
+                    </div>
 
                 </div>
-                
-               
-               
+
+
+
             </ul>
-            
 
-                
 
-            
+
+
+
         </div>
     </nav>
     
