@@ -64,7 +64,7 @@ $(window).load(function() {
   
 }
 
-.images img{
+.images .img1{
   height: 100%;
   width: 100%;
   border-radius: 20px;
@@ -116,10 +116,10 @@ height: 100%;
       </div>
       <div class="content">
                <div class="images">
-                  <img src="photos/img1.jpeg">
-                  <img src="photos/img2.jpeg">
-                  <img src="photos/img3.jpeg">
-                  <img src="photos/img4.jpeg">
+                  <img class="img1" src="photos/img1.jpeg" alt="Drone" >
+                  <img class="img1" src="photos/img2.jpeg" alt="Drone">
+                  <img class="img1" src="photos/img3.jpeg" alt="Drone">
+                  <img class="img1" src="photos/img4.jpeg" alt="Drone">
                </div>
             </div>
             <script>
@@ -127,8 +127,8 @@ height: 100%;
                function slideShow(){
                  setTimeout(slideShow, 2500);
                  var x;
-                 const img1 = document.querySelectorAll("img");
-                 for(x = 0; x < img.length; x++){
+                 const img1= document.querySelectorAll(".img1");
+                 for(x = 0; x < img1.length; x++){
                    img1[x].style.display = "none";
                  }
                  indexValue++;
