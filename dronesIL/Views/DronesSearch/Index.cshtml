@@ -37,6 +37,13 @@
         height: 15vw;
         object-fit: fill;
     }
+    .card-deck{
+        margin-top: 10px;
+        margin-left: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-gap: 8.5rem;
+    }
    
 </style>
 <script>
@@ -70,11 +77,10 @@
         <span id="noDrones" style="display:none;">מצטערים לא מצאנו רחפנים מדגם זה</span>
     </div>
     
-
-    <div class="card-deck">
-        @foreach (Drone d in Model)
+<div class="card-deck ">
+    @foreach (Drone d in Model)
         {
-            <div class="card">
+            <div class="card ">
                 <div class="card-header">
                     <span id="droneName">@d.name</span>
                 </div>
