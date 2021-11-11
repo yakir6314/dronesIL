@@ -69,6 +69,7 @@ function ValidateUser() {
 //})();
 
 function goToBasket() {
+    debugger;
     var cart;
     var stored = localStorage['cart'];
     if (stored) {

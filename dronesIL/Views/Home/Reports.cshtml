@@ -39,10 +39,16 @@
         const bars = container.selectAll('.bar')
             .data(daysReport)
             .enter()
+            .append("g")
             .append('rect')
             .classed('bar', true)
             .attr('width', xScale.bandwidth())
-            .attr('height', data => 300 - yScale(data.value/100))
+            .attr('height', data => 300 - yScale(data.value / 100))
+            .append("text")
+            .text(function (n) {
+                return n.name;
+            })
+            attr("text-anchor", "middle")
             .attr('x', data => xScale(data.name))
             .attr('y', data => yScale(data.value / 100));
 

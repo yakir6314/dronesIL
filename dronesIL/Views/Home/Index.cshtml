@@ -45,8 +45,11 @@
                    img1[x].style.display = "none";
                  }
                  indexValue++;
-                 if(indexValue > img1.length){indexValue = 1}
-                 img1[indexValue -1].style.display = "block";
+                   if (indexValue > img1.length) { indexValue = 1 }
+                   if (img1[indexValue - 1]) {
+                       img1[indexValue - 1].style.display = "block";
+                   }
+
                }
                slideShow();
             </script>
