@@ -122,6 +122,7 @@ namespace dronesIL.Controllers
                     {
                         order.user = u;
                     }
+                    order.orderDateTime = DateTime.Now;
                     _context.Order.Add(order);
                     _context.SaveChanges();
                     dol.ForEach(f => f.orderId = order.orderId);

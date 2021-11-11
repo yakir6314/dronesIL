@@ -46,6 +46,7 @@
             .attr('height', data => 300 - yScale(data.value / 100))
             .append("text")
             .text(function (n) {
+                debugger;
                 return n.name;
             })
             attr("text-anchor", "middle")
