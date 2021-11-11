@@ -16,7 +16,7 @@ namespace dronesIL.Models
         public DateTime LastUpdateDate { get; set; }
         public string description { get; set; }
         public string imageUrl { get; set; }
-
+        public ICollection<DronesOrders> dronesOrders { get; set; }
 
     }
 }
