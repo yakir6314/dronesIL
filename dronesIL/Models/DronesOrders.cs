@@ -14,5 +14,6 @@ namespace dronesIL.Models
         [Key]
         public int droneId { get; set; }
         public Drone drone { get; set; }
+        public int quantity { get; set; }
     }
 }

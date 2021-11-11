@@ -107,11 +107,12 @@ namespace dronesIL.Controllers
                 string DronesJson = (JObject.Parse(orderString))["drones"].ToString();
                 List<Drone> drones = JsonConvert.DeserializeObject<List<Drone>>(DronesJson);
                 List<DronesOrders> dol = new List<DronesOrders>();
-                foreach(Drone d in drones)
+                foreach(Drone d in drones.GroupBy(g=>g.droneId).Select(s=>s.FirstOrDefault()).ToList())
                 {
                     DronesOrders od = new DronesOrders()
                     {
                         droneId = d.droneId,
+                        quantity= drones.Where(w=>w.droneId==d.droneId).Count()
                     };
                     dol.Add(od);
                 }
