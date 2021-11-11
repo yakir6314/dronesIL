@@ -4693,8 +4693,6 @@ input[type="button"].btn-block {
     margin-left: -15px;
   }
   .card-deck .card {
-    display: -ms-flexbox;
-    display: flex;
     -ms-flex: 1 0 0%;
     flex: 1 0 0%;
     -ms-flex-direction: column;
@@ -5732,7 +5730,7 @@ a.close.disabled {
 }
 
 .modal {
-  position: fixed;
+  position:fixed;
   top: 0;
   left: 0;
   z-index: 1050;
@@ -5966,7 +5964,7 @@ a.close.disabled {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   word-wrap: break-word;
   opacity: 0;
 }
