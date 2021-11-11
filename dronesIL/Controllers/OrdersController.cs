@@ -91,7 +91,7 @@ namespace dronesIL.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> CreateOrder()
+        public string CreateOrder()
         {
             try
             {
@@ -102,32 +102,33 @@ namespace dronesIL.Controllers
                 {
                     orderString = reader.ReadToEndAsync().Result;
                 }
-                dynamic orderDynamic= JsonConvert.DeserializeObject<Order>(orderString);
-                Order order = new Order()
-                {
-                    city = orderDynamic["city"],
-                    orderDateTime = DateTime.Now,
-                    orderStatus = 0,
-                    street = orderDynamic["street"],
-                    streetNum = orderDynamic["streetNum"],
-                    Sum = orderDynamic["Sum"]
-                };
-                List<Drone> drones = orderDynamic["drones"];
+                string OrderJson = JObject.Parse(orderString).First.First.ToString();
+                Order order = JsonConvert.DeserializeObject<Order>(OrderJson);
+                string DronesJson = (JObject.Parse(orderString))["drones"].ToString();
+                List<Drone> drones = JsonConvert.DeserializeObject<List<Drone>>(DronesJson);
                 List<DronesOrders> dol = new List<DronesOrders>();
-
+                foreach(Drone d in drones)
+                {
+                    DronesOrders od = new DronesOrders()
+                    {
+                        droneId = d.droneId,
+                    };
+                    dol.Add(od);
+                }
                 if (ModelState.IsValid)
                 {
-                    order.orderDateTime = DateTime.Now;
                     user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
                     if (u != null)
                     {
                         order.user = u;
                     }
                     _context.Order.Add(order);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Index", "Home"); ;
+                    _context.SaveChanges();
+                    dol.ForEach(f => f.orderId = order.orderId);
+                    _context.dronesOrders.AddRange(dol);
+                    _context.SaveChanges();
                 }
-                return View(order);
+                return "seuccess";
             }
             catch(Exception e)
             {

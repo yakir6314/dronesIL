@@ -15,16 +15,12 @@ namespace dronesIL.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<DronesOrders>()
                 .HasKey(od => new { od.droneId, od.orderId });
-            modelBuilder.Entity<DronesOrders>()
-                .HasOne(od => od.drone)
-                .WithMany(d => d.dronesOrders)
-                .HasForeignKey(od => od.droneId);
-            modelBuilder.Entity<DronesOrders>()
-                .HasOne(od => od.order)
-                .WithMany(d => d.dronesOrders)
-                .HasForeignKey(od => od.orderId);
+
+            
         }
 
         public DbSet<dronesIL.Models.Drone> Drone { get; set; }

@@ -89,35 +89,32 @@
             city: $('#city')[0].value,
             street: $('#street')[0].value,
             streetNum: $('#streetNum')[0].value,
-            Sum: sum ,
-            drones:drones
+            Sum: sum 
         };
-        var jsonOrder = JSON.stringify(order);
+        var sendObject = {
+            order: order,
+            drones: drones
+        };
         $('#sum').val(sum.toFixed(2));
         var url ="/orders/CreateOrder"
         $.ajax({
             url: url,
-            data:  JSON.stringify(order) ,
+            data: JSON.stringify(sendObject),
             cache: false,
             type: "POST",
             success: function (data) {
-                if (data != null) {
-                    alert("התחברת בהצלחה");
-                    sessionStorage.setItem('user', JSON.stringify(data));
+                if (data == 'seuccess') {
+                    alert("ההזמנה בוצעה בהצלחה");
+                    localStorage['cart'] = null;
                     location.reload();
                 } else {
-                    alert("שם משתמש או סיסמה לא נכונים");
+                    alert("משהו קרה בדרך");
                 }
-                $("#txtmail").attr({ 'value': '' });
-                $("#txtpass").attr({ 'value': '' });
             },
             error: function (reponse) {
                 alert("error : " + reponse);
             }
         });
-        localStorage['cart'] = null;
-
-        $('OrderForm').submit(); // return false to cancel form action
     });
 
 </script>

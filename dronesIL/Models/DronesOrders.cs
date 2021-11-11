@@ -9,9 +9,9 @@ namespace dronesIL.Models
     public class DronesOrders
     {
         [Key]
-        public int id { get; set; }
         public int orderId { get; set; }
         public Order order { get; set; }
+        [Key]
         public int droneId { get; set; }
         public Drone drone { get; set; }
     }
