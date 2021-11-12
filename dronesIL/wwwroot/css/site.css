@@ -4,6 +4,19 @@ for details on configuring this project to bundle and minify static web assets. 
     font-family: 'Open Sans', sans-serif;
     src: url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
 }
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE"
+}
+
+.tablesAdmin{
+    text-align: center;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    text-align: center;
+    background-color: #cad7e5;
+}
 
 .logo {
     vertical-align: middle;
