@@ -103,7 +103,7 @@
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByClassName("card-text")[0];
             
-            if (a.innerHTML<=Input  ) {
+            if (parseInt(a.textContent)<=Input  ) {
                 li[i].style.display = "";
                 document.getElementById('noDrones').style.display = "none";
                 foundDrones += 1;
