@@ -214,6 +214,7 @@ footer {
 
 button {
     margin-inline-end: 10px;
+    margin-inline-start: 20px;
 }
 
 #myBtn {

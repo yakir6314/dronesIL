@@ -244,6 +244,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  margin-inline: 27px;
 }
 
 button,
@@ -5730,7 +5731,7 @@ a.close.disabled {
 }
 
 .modal {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1050;
@@ -9934,7 +9935,6 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-hide {
-  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;

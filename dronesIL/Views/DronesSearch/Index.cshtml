@@ -2,19 +2,6 @@
 @model IEnumerable<dronesIL.Models.Drone>
 
 <style>
-
-
-
-
-    .square-set,
-    .square {
-        border-radius: 15px;
-
-    }
-
-    .square-set {
-        background: darkgrey;
-    }
     img{
         max-width:250px;
     }
@@ -23,8 +10,12 @@
         display:none;
     }
     .searchInput{
-        width:97%;
+        width:100%;
         height:45px;
+    }
+    .modal-info{
+        display: contents;
+        text-decoration: underline;
     }
 
     .card{
@@ -41,12 +32,49 @@
         margin-top: 10px;
         margin-left: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        grid-gap: 8.5rem;
+        grid-template-columns: repeat(3, minmax(280px, 1fr));
+        grid-gap: 5%;
+        margin-bottom: 10%;
     }
+    .slidecontainer,#SearchDiv {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #04AA6D;
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #04AA6D;
+      cursor: pointer;
+    }
+   
    
 </style>
 <script>
+
     var model = @Html.Raw(@JsonConvert.SerializeObject(Model));
     var cart;
     var stored = localStorage['cart'];
@@ -67,21 +95,65 @@
             
         }
     }
+    function  searchPriceLessPress(){
+        var foundDrones = 0;
+        var Input = document.getElementById('myRange').value;
+        var li = document.getElementsByClassName('card');
+        
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByClassName("card-text")[0];
+            
+            if (a.innerHTML<=Input  ) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            } else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
+    
+        }
+        if (foundDrones == 0 ) {
+            document.getElementById("noDrones").style.display = "";
+        }
+    }
+    
+
+
+
 </script>
 
 
-    <div id="SearchDiv" style="padding: 20px">
-        <input type="text"  class="searchInput" id="myInput" onkeyup="searchKeyPress()" placeholder="חיפוש רחפן לפי דגם">
-    </div>
-    <div>
+<div id="SearchDiv" style="padding: 20px">
+    <input type="text"  class="searchInput" id="myInput" onkeyup="searchKeyPress()" placeholder="חיפוש רחפן לפי דגם">
+</div >
+<div class="slidecontainer" id="SearchDiv2" style="padding: 20px">
+    <p style="text-align: right; direction: rtl">חפש רחפו על פי מחיר ֿ</p>
+    <input type="range" min="0" max="10000" class="slider" value="5000" id="myRange" onchange="searchPriceLessPress()"
+           style="inline-size:100%; position: center;">
+    <p style="text-align: center; direction:rtl">עד מחיר :<span id="demo"></span></p>
+</div>
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+
+
+
+<div>
         <span id="noDrones" style="display:none;">מצטערים לא מצאנו רחפנים מדגם זה</span>
     </div>
     
 <div class="card-deck ">
     @foreach (Drone d in Model)
         {
-            <div class="card ">
-                <div class="card-header">
+            <div id="@d.droneId" class="card ">
+                <div id="@d.droneId" class="card-header" style="text-align-last: center;">
                     <span id="droneName">@d.name</span>
                 </div>
 
@@ -90,12 +162,15 @@
                         <img class="card-img" data-toggle="tooltip" data-placement="top"  title="@d.description" src="@d.imageUrl"/>
                     </div>
                 </div>
-                 <span class="card-text" style="text-align-all:center; direction: rtl">מחיר : @d.price </span>
+                
+                
+                <span style="text-align-all:center; direction: rtl">מחיר רחפן בשקלים :</span>
+                <div class="card-text" id="price" style="text-align-all:center; direction: rtl">@d.price</div>
                 <div class="card-footer">
-                    <button id="@d.droneId"  data-target="#droneModal"  data-toggle="modal" >
+                    <button class="modal-info" id="@d.droneId"  data-target="#droneModal"  data-toggle="modal" >
                         מידע נוסף
                     </button>
-                     <div class="modal" id="droneModal" tabindex="2" style="z-index:1041;">
+                     <div class="modal">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
