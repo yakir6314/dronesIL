@@ -13,11 +13,21 @@ namespace dronesIL.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<DronesOrders>()
+                .HasKey(od => new { od.droneId, od.orderId });
+
+            
+        }
 
         public DbSet<dronesIL.Models.Drone> Drone { get; set; }
 
         public DbSet<dronesIL.Models.user> user { get; set; }
 
         public DbSet<dronesIL.Models.Order> Order { get; set; }
+        public DbSet<dronesIL.Models.DronesOrders> dronesOrders { get; set; }
     }
 }

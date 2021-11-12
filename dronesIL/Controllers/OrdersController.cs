@@ -9,6 +9,9 @@ using dronesIL.Data;
 using dronesIL.Models;
 using helpers.SessionHelper;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.IO;
+using System.Text;
 
 namespace dronesIL.Controllers
 {
@@ -65,34 +68,74 @@ namespace dronesIL.Controllers
         [HttpPost]
         public IActionResult goToBasket(List<Drone> drones)
         {
+            List<DronesOrders> odl = new List<DronesOrders>();
+            foreach(Drone dron in drones)
+            {
+                DronesOrders od = new DronesOrders()
+                {
+                    drone = dron,
+                    droneId = dron.droneId
+                };
+                odl.Add(od);
+            }
             Order order = new Order
             {
-                drones = drones,
+                dronesOrders = odl,
                 Sum = drones.Sum(s => s.price)
             };
             return PartialView("~/Views/Orders/Create.cshtml", order);
+            
         }
 
         // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create(Order order)
+        public string CreateOrder()
         {
-            if (ModelState.IsValid)
+            try
             {
-                order.orderDateTime = DateTime.Now;
-                user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
-                if (u != null)
+
+
+                string orderString;
+                using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                 {
-                    order.user.userId = u.userId;
+                    orderString = reader.ReadToEndAsync().Result;
                 }
-                _context.Order.Add(order);
-                //_context.Add(order);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home"); ;
+                string OrderJson = JObject.Parse(orderString).First.First.ToString();
+                Order order = JsonConvert.DeserializeObject<Order>(OrderJson);
+                string DronesJson = (JObject.Parse(orderString))["drones"].ToString();
+                List<Drone> drones = JsonConvert.DeserializeObject<List<Drone>>(DronesJson);
+                List<DronesOrders> dol = new List<DronesOrders>();
+                foreach(Drone d in drones.GroupBy(g=>g.droneId).Select(s=>s.FirstOrDefault()).ToList())
+                {
+                    DronesOrders od = new DronesOrders()
+                    {
+                        droneId = d.droneId,
+                        quantity= drones.Where(w=>w.droneId==d.droneId).Count()
+                    };
+                    dol.Add(od);
+                }
+                if (ModelState.IsValid)
+                {
+                    user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
+                    if (u != null)
+                    {
+                        order.user = u;
+                    }
+                    order.orderDateTime = DateTime.Now;
+                    _context.Order.Add(order);
+                    _context.SaveChanges();
+                    dol.ForEach(f => f.orderId = order.orderId);
+                    _context.dronesOrders.AddRange(dol);
+                    _context.SaveChanges();
+                }
+                return "seuccess";
             }
-            return View(order);
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         // GET: Orders/Edit/5

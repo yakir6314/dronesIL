@@ -69,6 +69,7 @@ function ValidateUser() {
 //})();
 
 function goToBasket() {
+    debugger;
     var cart;
     var stored = localStorage['cart'];
     if (stored) {
@@ -108,11 +109,12 @@ function RemoveFromCart(droneId) {
 function createOrder(a) {
 
 }
+
 function searchKeyPress() {
     var foundDrones = 0;
     var Input = document.getElementById('myInput').value;
     Input = Input.toUpperCase();
-    var li = document.getElementsByClassName('square square-1');
+    var li = document.getElementsByClassName('card');
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("span")[0];
         txtValue = a.textContent || a.innerText;

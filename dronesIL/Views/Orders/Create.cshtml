@@ -76,19 +76,52 @@
     script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
     script.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(script);
-    $('#OrderForm').submit(function () {
-        localStorage['cart'] = null;
+    $('#OrderSubmutButton').on('click', function () {
+        debugger;
+        var cart = localStorage['cart'];
+        if ($('#city')[0].value == '' || $('#street')[0].value == '' || $('#streetNum')[0].value=='') {
+            alert('נא להוסיף כתובת');
+            return;
+        }
         var sum =@Model.Sum;
+        var drones =@Html.Raw(Json.Serialize(@Model.dronesOrders.Select(s=>s.drone).ToList()));
+        var order = {
+            city: $('#city')[0].value,
+            street: $('#street')[0].value,
+            streetNum: $('#streetNum')[0].value,
+            Sum: sum 
+        };
+        var sendObject = {
+            order: order,
+            drones: drones
+        };
         $('#sum').val(sum.toFixed(2));
-        console.log($('#Sum').val());
-        return true; // return false to cancel form action
+        var url ="/orders/CreateOrder"
+        $.ajax({
+            url: url,
+            data: JSON.stringify(sendObject),
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                if (data == 'seuccess') {
+                    alert("ההזמנה בוצעה בהצלחה");
+                    localStorage['cart'] = null;
+                    location.reload();
+                } else {
+                    alert("משהו קרה בדרך");
+                }
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
     });
 
 </script>
 <h1 style="text-align:center;">סל הקניות שלי</h1>
 
 
-@if (this.Model.drones.Count != 0)
+@if (this.Model.dronesOrders.Select(s => s.drone).ToList().Count != 0)
 {
     <hr/>
     <div class="row" >
@@ -97,17 +130,17 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="city" class="control-label">עיר</label>
-                    <input asp-for="city" class="form-control"/>
+                    <input asp-for="city" class="form-control" id="city"/>
                     <span asp-validation-for="city" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="street" class="control-label">רחוב</label>
-                    <input asp-for="street" class="form-control"/>
+                    <input asp-for="street" class="form-control" id="street"/>
                     <span asp-validation-for="street" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="streetNum" class="control-label">מספר</label>
-                    <input asp-for="streetNum" class="form-control"/>
+                    <input asp-for="streetNum" class="form-control" id="streetNum"/>
                     <span asp-validation-for="streetNum" class="text-danger"></span>
                 </div>
               
@@ -117,14 +150,14 @@
             <h4 style="text-align:center;">פריטים</h4>
             @if (Model != null)
             {
-                if (Model.drones != null)
+                if (Model.dronesOrders.Select(s=>s.drone).ToList() != null)
                 {
                     <table >
                         <tr>
                             <td class="CartTd" style="text-align: center; text-decoration: underline">שם</td>
                             <td class="CartTd">מחיר</td>
                         </tr>
-                        @foreach (Drone drone in Model.drones)
+                        @foreach (Drone drone in Model.dronesOrders.Select(s => s.drone).ToList())
                         {
                             <tr class="CartTr">
                                 <td class="CartTd">
@@ -142,7 +175,7 @@
                         }
                     </table>
                     <div id="btn-sum" style="border-color: black ;  ">
-                        <p style="text-align: center;">   @Model.drones.Count פריטים בסל זה </p>
+                        <p style="text-align: center;">   @Model.dronesOrders.Select(s=>s.drone).ToList().Count פריטים בסל זה </p>
                         <p style=" text-align: center;"> סה״כ   @Model.Sum ש״ח </p>  
                         
                     </div>
@@ -157,10 +190,10 @@ else
     <h1 style="text-align:center;">הסל ריק</h1>
     <div style="text-align: center"> <a style="color: red; text-decoration:blink"> עדיין לא בחרת רחפן ? <a asp-controller="DronesSearch" asp-action="Index">לחץ כאן ותתחיל בקניות  </a>
         </a></div>
-    }
+}
 
                 <div class="row" style="margin: auto">
-                    <input type="submit" value="אישור הזמנה" class="btn btn-primary"/>
+                    <input type="submit" value="אישור הזמנה" class="btn btn-primary" id="OrderSubmutButton"/>
                 </div>
 
 @section Scripts {
