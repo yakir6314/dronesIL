@@ -95,7 +95,7 @@ function ValidateUser() {
 }
 
 function goToBasket() {
-    debugger;
+    
     var cart;
     var stored = localStorage['cart'];
     if (stored) {
@@ -134,7 +134,7 @@ function RemoveFromCart(droneId) {
 }
 
 function searchKeyPress() {
-    debugger;
+    
     var foundDrones = 0;
     var Input = document.getElementById('myInput').value;
     var rangeInput = document.getElementById('myRange').value;
