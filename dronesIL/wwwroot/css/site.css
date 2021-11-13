@@ -316,8 +316,7 @@ h1 {
     font-weight: 400;
     color: black;
     text-shadow: 5px 5px 10px grey;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .col-xs-8 {
@@ -403,3 +402,17 @@ canvas {
     background: url(https://jackrugile.com/images/misc/skyline-texture.png);
     z-index: 1000;
   }
+
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+    text-align: right;
+    float: left;
+    margin-top: 70px;
+  }
+
+
+.fab, .far {
+    font-size: x-large;
+}

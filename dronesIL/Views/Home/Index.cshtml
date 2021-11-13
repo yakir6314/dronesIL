@@ -74,15 +74,15 @@ margin-top: 20px;
       </div>
 <div class="card-deck" id="deck">
 
-  <div class="card">
-    <div class="images" style="border-radius: 400px;">
-      <img class="img1" src="photos/img1.jpeg" alt="Drone">
-      <img class="img1" src="photos/img2.jpeg" alt="Drone">
-      <img class="img1" src="photos/img3.jpeg" alt="Drone">
-      <img class="img1" src="photos/img4.jpeg" alt="Drone">
+    <div class="card">
+        <div class="images" style="border-radius: 400px;">
+            <img class="img1" src="photos/img1.jpeg" alt="Drone">
+            <img class="img1" src="photos/img2.jpeg" alt="Drone">
+            <img class="img1" src="photos/img3.jpeg" alt="Drone">
+            <img class="img1" src="photos/img4.jpeg" alt="Drone">
+        </div>
     </div>
-  </div>
-  <script>
+    <script>
                var indexValue = 0;
                function slideShow(){
                  setTimeout(slideShow, 2500);
@@ -101,19 +101,28 @@ margin-top: 20px;
                slideShow();
             </script>
 
-  <div class="card">
+    <div class="card">
 
-    <video autoplay muted loop style="border-radius: 400px" >
-      <source src="~/videos/WhatsApp Video 2021-05-29 at 20.22.42.mp4"  style="width: 700px; height:420px" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+        <video autoplay muted loop style="border-radius: 400px" >
+            <source src="~/videos/WhatsApp Video 2021-05-29 at 20.22.42.mp4"  style="width: 700px; height:420px" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
 
-  </div>
+    </div>
+
 
 
 
 </div>
-
+      <button id="btn btn-info btn-rg" data-target="#RegisterModal" data-toggle="modal">הרשמה לאתר</button>
+                          <div class="modal" tabindex="2" id="RegisterModal" style="z-index:1041;">
+                              <div class="modal-dialog" style="max-width:100%;">
+                                  <div id="regContent" class="modal-content">
+                                      @await Html.PartialAsync("../users/create")
+                                  </div>
+                              </div>
+  
+                          </div>
 
 
 
