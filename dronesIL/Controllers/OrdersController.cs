@@ -157,7 +157,7 @@ namespace dronesIL.Controllers
             }
             catch(Exception e)
             {
-                throw e;
+                return e.Message;
             }
         }
 
