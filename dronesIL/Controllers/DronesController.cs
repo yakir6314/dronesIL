@@ -94,7 +94,7 @@ namespace dronesIL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RequireAuthentication(true)]
-        public async Task<IActionResult> Edit(int id, [Bind("droneId,name,price,description,imagUrl")] Drone drone)
+        public async Task<IActionResult> Edit(int id, [Bind("droneId,name,price,description,imageUrl")] Drone drone)
         {
             if (id != drone.droneId)
             {
