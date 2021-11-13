@@ -67,6 +67,11 @@ namespace dronesIL.Controllers
         {
             return View();
         }
+        [RequireAuthentication(false)]
+        public IActionResult ordersMap()
+        {
+            return View();
+        }
         [RequireAuthentication(true)]
         public IActionResult admin()
         {
