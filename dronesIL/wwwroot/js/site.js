@@ -94,25 +94,6 @@ function ValidateUser() {
     $("#btnlogin").val('Login');
 }
 
-//window.weatherWidgetConfig = window.weatherWidgetConfig || [];
-//window.weatherWidgetConfig.push({
-//    selector: ".weatherWidget",
-//    apiKey: "EZMLDFYE2994242A5TT5XJF58", //Sign up for your personal key
-//    location: "tel aviv,israel", //Enter an address
-//    unitGroup: "metric", //"us" or "metric"
-//    forecastDays: 5, //how many days forecast to show
-//    title: "Tel Aviv ", //optional title to show in the
-//    showTitle: true,
-//    showConditions: true
-//});
-
-//(function () {
-//    var d = document, s = d.createElement('script');
-//    s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
-//    s.setAttribute('data-timestamp', +new Date());
-//    (d.head || d.body).appendChild(s);
-//})();
-
 function goToBasket() {
     debugger;
     var cart;
