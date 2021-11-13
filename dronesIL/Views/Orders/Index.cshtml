@@ -31,12 +31,12 @@
     text-align: center;
     border:  1px solid gray;
     }
-    .table thead th {
-        vertical-align: bottom;
-        border-bottom: 2px solid #dee2e6;
-        text-align: center;
-        background-color: #cad7e5;
-    }
+     .table thead th {
+         vertical-align: bottom;
+         border-bottom: 2px solid #dee2e6;
+         text-align: center;
+         background-color: #cad7e5;
+     }
     </style>
 <h1>ניהול הזמנות</h1>
 
@@ -63,6 +63,7 @@
             @Html.DisplayNameFor(model => model.orderStatus)
         </th>
         <th></th>
+        
     </tr>
     </thead>
     <tbody >
@@ -86,7 +87,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.orderStatus)
             </td>
-            <td>
+
             <td class="col-sm-3">
                 <a class="btn" asp-action="Edit"  asp-route-id="@item.orderId">עריכה</a> |
                  <a class="btn" asp-action="Details" asp-route-id="@item.orderId">פרטים נוספים</a> |

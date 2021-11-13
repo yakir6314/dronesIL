@@ -1,26 +1,169 @@
 ﻿<style>
-    .Link {
-        color: black;
-        font-size: 25px;
-        text-decoration: underline;
-    }
-</style>
-<script>
 
-</script>
-<div id="Links" style="text-align:right;">
-    <ul>
-        <li>
-            <a class="Link" asp-area="" asp-controller="Drones" asp-action="Index">ניהול רחפנים</a>
-        </li>
-        <li>
-            <a class="Link" asp-area="" asp-controller="Home" asp-action="Reports"> דוחות</a>
-        </li>
-        <li>
-            <a class="Link" asp-area="" asp-controller="users" asp-action="Index"> ניהול משתמשים</a>
-        </li>
-                <li>
-                    <a class="Link" asp-area="" asp-controller="Orders" asp-action="Index"> ניהול הזמנות</a>
+       .card-deck{
+            margin-top: 10px;
+            margin-left: auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(280px, 1fr));
+            grid-gap: 5%;
+            margin-bottom: 10%;
+        }
+           .card{
+            align-items: center;
+            margin:10%;
+            align-content: center;
+            direction: rtl;
+             background: -webkit-linear-gradient(110deg, #95b8f5 60%, #a2c3fa 60%);
+             border-radius: 50px;;
+            
+            }
+            .card-header{
+            background: none;
+            border: none;
+            }
+            .card-footer{
+              background: none;
+                border: none;
+            }
+            
+            .card-body{
+            direction: rtl;
+            text-align-last: right;            }
+                .btn {
+                    display: inline-grid;
+                    font-weight: 400;
+                    color: #212529;
+                    text-align: center;
+                    vertical-align: middle;
+                    /* -webkit-user-select: none; */
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select:all;
+                    background-color: #cad7e569;
+                    border: 1px solid black;
+                    padding: .375rem .75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    border-radius: .25rem;
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                }
+</style>
+<div class="card-deck">
+            <div class="card">
+            <div class="card-header">
+                <h4>עמוד ניהול רחפנים</h4>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <h5>באפשרותך:</h5>
+                    <li>
+                        <h5>  להסתכל על הרחפנים במלאי</h5>
                     </li>
-    </ul>
+                    <li>
+                        <h5>  לערוך רחפן קיים</h5>
+                    </li>
+                    <li>
+                        <h5>  למחוק רחפן קיים</h5>
+                    </li>
+        </ul>
+    </div>
+    <div class="card-footer">
+        <a class="btn" asp-area="" asp-controller="Drones" asp-action="Index">לחץ כאן</a>
+    </div>
 </div>
+<div class="card">
+    <div class="card-header">
+        <h4>עמוד ניהול משתמשים</h4>
+    </div>
+    <div class="card-body">
+        <ul>
+            <h5>באפשרותך:</h5>
+            <li>
+                <h5>  להסתכל על  המשתמשים הרשומים</h5>
+            </li>
+            <li>
+                <h5>  לערוך משתמש קיים</h5>
+            </li>
+            <li>
+                <h5>  למחוק משתמש קיים</h5>
+            </li>
+            <li>
+                <h5> להגדיר הרשאות ניהול</h5>
+            </li>
+                        
+        </ul>
+    </div>
+    <div class="card-footer">
+        <a class="btn" asp-area="" asp-controller="users" asp-action="Index">לחץ כאן</a>
+    </div>
+</div>
+
+              <div class="card">
+                  <div class="card-header">
+                      <h4>עמוד ניהול הזמנות</h4>
+                  </div>
+                  <div class="card-body">
+                      <ul>
+                          <h5>באפשרותך:</h5>
+                          <li>
+                              <h5>  להסתכל על הזמנות קיימות</h5>
+                          </li>
+                          <li>
+                              <h5>    להסתכל על הזמנות היסטוריות</h5>
+                          </li>
+
+                      </ul>
+                  </div>
+                  <div class="card-footer">
+                      <a class="btn" asp-area="" asp-controller="orders" asp-action="Index">לחץ כאן</a>
+                  </div>
+                  
+                  </div>
+
+    
+    <div class="card">
+                      <div class="card-header">
+                          <h4>מפת הזמנות</h4>
+                      </div>
+                      <div class="card-body">
+                          <ul>
+                              <h5>באפשרותך:</h5>
+                              <li>
+                                  <h5>  להסתכל במפה על הזמנות הקיימות</h5>
+                              </li>
+
+                          </ul>
+                      </div>
+                      <div class="card-footer">
+                          <a class="btn" asp-area="" asp-controller="Home" asp-action="ContactUs">לחץ כאן</a>
+                      </div>
+    </div>
+
+
+<div class="card">
+    <div class="card-header">
+        <h4>דוחות מנהל</h4>
+    </div>
+    <div class="card-body">
+        <ul>
+            <h5>באפשרותך:</h5>
+            <li>
+                <h5>  להסתכל במפה על הזמנות הקיימות</h5>
+            </li>
+            <li>
+                <h5>  להסתכל במפה על הזמנות הקיימות</h5>
+            </li>
+                              
+                  
+        </ul>
+    </div>
+    <div class="card-footer">
+        <a class="btn" asp-area="" asp-controller="Home" asp-action="Reports">לחץ כאן</a>
+    </div>
+</div>
+
+
+
+</div>
+
+
