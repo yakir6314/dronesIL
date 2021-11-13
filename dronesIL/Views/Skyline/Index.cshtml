@@ -3,6 +3,17 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    a.btn_you_tube{
+        margin-inline:10px;
+        border: 1px solid;
+        border-radius:15px;;
+
+    }
+    .container{
+        height:10px;
+    }
+</style>
 
 
 <!DOCTYPE html>
@@ -16,20 +27,50 @@
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="skyline-canvas"></div>
-<!--
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        position: relative;
+        padding-inline: 18%;
+        align-items: stretch;
+        padding-top: 10%;
+        opacity: 49%;
 
-Canvas Parallax Skyline
------------------------
-Move your mouse to change speed and move up and down.
+">
+        <div>
+            <iframe width="400" height="315" src="https://www.youtube.com/embed/daEwz0dYXHM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
--->
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://rawgithub.com/soulwire/sketch.js/master/js/sketch.min.js'></script>
-<script  src="./js/skyline.js"></script>
-<script  src="./js/site.js"></script>
+        </div>
+        <div>
+            <iframe width="400" height="315" src="https://www.youtube.com/embed/2DK9_fAzXiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+
+    </div>
+    <!-- partial:index.partial.html -->
+    <div class="skyline-canvas"></div>
+    <!--
+
+    Canvas Parallax Skyline
+    -----------------------
+    Move your mouse to change speed and move up and down.
+
+    -->
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://rawgithub.com/soulwire/sketch.js/master/js/sketch.min.js'></script>
+    <script src="./js/skyline.js"></script>
+    <script src="./js/site.js"></script>
+    <!--   <div style="text-align-last:center; position:relative ; padding-top:40%">
+           <a class="btn_you_tube" href="https://www.youtube.com/watch?v=daEwz0dYXHM">
+               סקירה מאויק 3 </aclass="btn">
+               <a class="btn_you_tube" href="https://www.youtube.com/watch?v=2DK9_fAzXiA&t=5s"> סקירה מאויק איר 2 </a>
+               <a class="btn_you_tube" href="https://www.youtube.com/watch?v=47iZmTHi3-8"> סקירה מאויק איר 2S </a>
+
+        -->
+
+
+
 
 </body>
 </html>
