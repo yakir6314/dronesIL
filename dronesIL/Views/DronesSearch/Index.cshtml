@@ -127,7 +127,15 @@
         }
     }
     
-
+    function passDroneDataToModel(droneId) {
+        debugger;
+        var selectedDrone = model.find(f => f.droneId == droneId);
+        document.getElementById('droneName').innerHTML = selectedDrone.name;
+        document.getElementById('dronePrice').innerHTML = selectedDrone.price;
+        $("#DroneImg").attr("src", selectedDrone.imageUrl);
+        document.getElementById('droneDesc').innerHTML = selectedDrone.description;
+        document.getElementsByClassName('droneId').id = selectedDrone.droneId;
+    }
 
 
 </script>
@@ -176,7 +184,7 @@ slider.oninput = function() {
                 <span style="text-align-all:center; direction: rtl">מחיר רחפן בשקלים :</span>
                 <div class="card-text" id="price" style="text-align-all:center; direction: rtl">@d.price</div>
                 <div class="card-footer">
-                    <button class="modal-info" id="@d.droneId"  data-target="#droneModal"  data-toggle="modal" >
+                    <button class="modal-info" id="@d.droneId" data-id="@d.droneId"  data-target="#droneModal"  data-toggle="modal" onclick="passDroneDataToModel( @d.droneId )" >
                         מידע נוסף
                     </button>
                      <div class="modal" id="droneModal">
@@ -184,22 +192,22 @@ slider.oninput = function() {
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">@d.name</h4>
+                                    <h4 class="modal-title" id="droneName"></h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img class="img-responsive" style="margin:0 auto;" src="@d.imageUrl">
+                                            <img class="img-responsive" style="margin:0 auto;" src="" id="DroneImg">
                                         </div>
                                         <div style="margin-right:30%;">
-                                            <p>@d.description</p>
+                                            <p id="droneDesc"></p>
                                         </div>
                                    
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <span  style="margin-inline:10% ; text-align-all:center; direction: rtl">מחיר : @d.price </span>
-                                    <button id="@d.droneId" onclick="addToCart(this.id)">
+                                    <span  style="margin-inline:10%; text-align-all:center; direction: rtl">מחיר :<p id="dronePrice" style="display:contents"><p/>  </span>
+                                    <button id="@d.droneId" onclick="addToCart(this.id)" class="droneId">
                                         הוסף לסל
                                         <img src="~/svg/addtocartsvg.svg" style="width:30px;margin:8px;"/>
                                     </button>

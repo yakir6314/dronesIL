@@ -22,6 +22,9 @@ $(document).ready(function () {
     //});
 });
 
+
+
+
 function disconnectUser() {
     var url = "/Home/disconnectUser";
     $.ajax({
