@@ -137,7 +137,7 @@ namespace dronesIL.Controllers
                     _context.SaveChanges();
                 }
                 DronesMail mail = new DronesMail("dronesIlSite@gmail.com", "yakir6314@gmail.com", "אישור הזמנה מאתר הרחפנים של ישראל");
-                Task.Run(() => mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעכב אנא היכנס למערכת הניהול\nתודה")); 
+                Task.Run(() => mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעקב אנא היכנס למערכת הניהול\nתודה")); 
 
                 return "seuccess";
             }
