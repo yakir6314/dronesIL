@@ -24,7 +24,7 @@ namespace dronesIL.Models
         [Required]
         [RegularExpression(@"([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage ="Invalid Email")]
         public string mail { get; set; }
-        //[RegularExpression(@"^d$", ErrorMessage = "invalid phone number")]
+        [RegularExpression(@"^\+?(972|0)(\-)?0?(([23489]{1}\d{7})|[5]{1}\d{8})$", ErrorMessage = "invalid phone number")]
         [DisplayName("מספר טלפון")]
         [Required]
         public string phoneNumber { get; set; }
