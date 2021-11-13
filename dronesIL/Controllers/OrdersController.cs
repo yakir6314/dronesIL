@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using dronesIL.helpers;
 
 namespace dronesIL.Controllers
 {
@@ -130,6 +131,9 @@ namespace dronesIL.Controllers
                     _context.dronesOrders.AddRange(dol);
                     _context.SaveChanges();
                 }
+                DronesMail mail = new DronesMail("dronesIlSite@gmail.com", "yakir6314@gmail.com", "אישור הזמנה מאתר הרחפנים של ישראל");
+                mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעכב אנא היכנס למערכת הניהול\nתודה");
+
                 return "seuccess";
             }
             catch(Exception e)
