@@ -417,3 +417,19 @@ canvas {
 .fab, .far {
     font-size: x-large;
 }
+
+aside {
+    width: 25%;
+    padding-right: 15px;
+    margin-left: 100px;
+    float: left;
+    font-style: italic;
+    background-color: lightgray;
+    text-align: right;
+  }
+
+section { 
+    text-align: right;
+    margin-top: 50px;
+    margin-right: 50px;
+}
