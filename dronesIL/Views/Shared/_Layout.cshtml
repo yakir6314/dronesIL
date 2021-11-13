@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿
+<style>
+    .nav-link text-dark {
+        
+    }
+</style>
+<!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -22,6 +28,7 @@
 	});
 </script>
 
+
 <body>
     <div class="se-pre-con"></div>
     <header>
@@ -39,7 +46,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">צרו איתנו קשר</a>
+                        <a class="nav-link text-dark" style="direction: ltr; display: inline-flex;" asp-area="" asp-controller="Home" asp-action="ContactUs">
+                            צרו איתנו קשר
+                            <img src="~/svg/contact-phone-svgrepo-com.svg" style="width:22px;margin-inline:10px;" />
+                        </a>
                     </li>
                     <li class="nav-item" style="display:none;" id="adminButton">
                         <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
@@ -47,11 +57,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חנות רחפנים</a>
+                        <a class="nav-link text-dark" style="direction: ltr; display: inline-flex;" asp-area="" asp-controller="DronesSearch" asp-action="index">
+                            חנות רחפנים                                   <img src="~/svg/addtocartsvg - Copy.svg" style="width:22px;margin-inline:10px;" />
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Skyline" asp-action="index">סקירות רחפנים במדיה</a>
+                        <a class="nav-link text-dark" style="direction: ltr; display: inline-flex;" asp-area="" asp-controller="Skyline" asp-action="index">
+                            סקירות רחפנים במדיה                           <img src="~/svg/video-svgrepo-com.svg" style="width:30px;margin-inline:10px;" />
+                        </a>                     
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ">
