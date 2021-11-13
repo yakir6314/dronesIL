@@ -52,8 +52,9 @@
                             <img src="~/svg/contact-phone-svgrepo-com.svg" style="width:22px;margin-inline:10px;" />
                         </a>
                     </li>
-                    <li class="nav-item" style="display:none;" id="adminButton">
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
+                    <li class="nav-item" style="direction: ltr; display: inline-flex ;display:none;" id="adminButton">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">
+                        מערכת ניהול             <img src="~/svg/graph-svgrepo-com.svg" style="width:22px;margin-inline:10px;" /></a>
 
                     </li>
 
@@ -69,7 +70,9 @@
                         </a>                     
                     </li>
                     <li class="nav-item" id="registerButtom">
-                        <a class="nav-link text-dark" asp-controller="users" asp-action="create">הרשמה</a>
+                        <a class="nav-link text-dark" style="direction: ltr; display: inline-flex;" asp-area="" asp-controller="users" asp-action="Create">
+                            הרשמה            <img src="~/svg/register-svgrepo-com.svg" style="width:22px;margin-inline:10px;" />
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ">
@@ -142,11 +145,11 @@
 <footer class="page-footer font-small ">
     <div class="socialbtns">
         <ul>
-            <li><a href="#" class="fa fa-lg fa-facebook"></a></li>
-            <li><a href="#" class="fa fa-lg fa-twitter"></a></li>
-            <li><a href="#" class="fa fa-lg fa-linkedin"></a></li>
-            <li><a href="#" class="fa fa-lg fa-instagram"></a></li>
-            <li><a href="#" class="fa fa-lg fa-youtube"></a></li>
+            <li><a href="https://www.facebook.com/groups/468069213315983/?ref=share" class="fa fa-lg fa-facebook"></a></li>
+            <li><a href="https://www.linkedin.com/company/dronedeploy/" class="fa fa-lg fa-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/company/dronedeploy/" class="fa fa-lg fa-linkedin"></a></li>
+            <li><a href="https://www.instagram.com/djiglobal/" class="fa fa-lg fa-instagram"></a></li>
+            <li><a href="https://www.youtube.com/results?search_query=drones" class="fa fa-lg fa-youtube"></a></li>
         </ul>
     </div>
 </footer>
