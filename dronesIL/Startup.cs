@@ -35,7 +35,7 @@ namespace dronesIL
                     }));
             services.AddDistributedMemoryCache();
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.IdleTimeout = TimeSpan.FromDays(1);
             });
             services.AddMvc();
         }

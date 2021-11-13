@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using dronesIL.Data;
 using helpers.SessionHelper;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace dronesIL.Controllers
 {
@@ -70,8 +71,23 @@ namespace dronesIL.Controllers
         public string GetDaysReport()
         {
             List<Order> orders = _context.Order.ToList();
-            var groupedOrders = orders.GroupBy(g => g.orderDateTime.Date, v => v).Select(s => new  { name = s.Key, value = s.Sum(su => su.Sum) }).ToList();
+            var groupedOrders = orders.GroupBy(g => g.orderDateTime.Date.ToString("yyyy-MM-dd"), v => v).Select(s => new  { name = s.Key, value = s.Count() }).ToList();
             return JsonConvert.SerializeObject(groupedOrders);
+        }
+        [HttpGet]
+        [RequireAuthentication(true)]
+        public string GetDronesCountReport()
+        {
+            try
+            {
+                var droneOrders = _context.dronesOrders.GroupBy(g=>g.drone.name).Select(s=>new { name = s.Key, value = s.Sum(su => su.quantity) }).ToList();
+                return JsonConvert.SerializeObject(droneOrders);
+            }
+            catch(Exception e)
+            {
+                string s = e.Message;
+                throw e;
+            }
         }
 
         public IActionResult Index()
