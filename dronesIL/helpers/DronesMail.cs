@@ -62,10 +62,10 @@ namespace dronesIL.helpers
             if (this.attachment != null)
             {
                 mssg.Attachments.Add(this.attachment);
-                
             }
             try
             {
+                smtp.Timeout = 3000;
                 smtp.Send(mssg);
                 mssg.Dispose();
             }

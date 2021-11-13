@@ -117,9 +117,10 @@ namespace dronesIL.Controllers
                     };
                     dol.Add(od);
                 }
+                user u = null;
                 if (ModelState.IsValid)
                 {
-                    user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
+                    u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
                     if (u != null)
                     {
                         u = _context.user.Where(w => w.userId == u.userId).FirstOrDefault();
@@ -136,9 +137,18 @@ namespace dronesIL.Controllers
                     _context.dronesOrders.AddRange(dol);
                     _context.SaveChanges();
                 }
-                DronesMail mail = new DronesMail("dronesIlSite@gmail.com", "yakir6314@gmail.com", "אישור הזמנה מאתר הרחפנים של ישראל");
-                Task.Run(() => mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעקב אנא היכנס למערכת הניהול\nתודה")); 
-
+                Task.Run(() =>
+                {
+                    DronesMail mail = new DronesMail("dronesIlSite@gmail.com", "yakir6314@gmail.com", "אישור הזמנה מאתר הרחפנים של ישראל");
+                    mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעקב אנא היכנס למערכת הניהול\nתודה");
+                }
+                );
+               
+                Task.Run(() => {
+                    DronesMail mailToUser = new DronesMail("dronesIlSite@gmail.com", u.mail, "אישור הזמנה מאתר הרחפנים של ישראל");
+                    mailToUser.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעקב אנא היכנס למערכת הניהול\nתודה");
+                });
+              
                 return "seuccess";
             }
             catch(Exception e)
