@@ -80,7 +80,7 @@ namespace dronesIL.Controllers
                 _context.Add(user);
                 await _context.SaveChangesAsync();
             }
-            return View("../home/index");
+            return RedirectToAction("index","Home");
         }
 
         // GET: users/Edit/5
