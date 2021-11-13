@@ -79,7 +79,6 @@ namespace dronesIL.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
             return View("../home/index");
         }
