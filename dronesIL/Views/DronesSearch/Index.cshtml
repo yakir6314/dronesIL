@@ -106,7 +106,6 @@
     }
     
     function passDroneDataToModel(droneId) {
-        debugger;
         var selectedDrone = model.find(f => f.droneId == droneId);
         document.getElementById('droneName').innerHTML = selectedDrone.name;
         document.getElementById('dronePrice').innerHTML = selectedDrone.price;

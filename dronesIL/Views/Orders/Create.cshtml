@@ -77,7 +77,7 @@
     script.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(script);
     $('#OrderSubmutButton').on('click', function () {
-        debugger;
+        
         var cart = localStorage['cart'];
         if ($('#city')[0].value == '' || $('#street')[0].value == '' || $('#streetNum')[0].value=='') {
             alert('נא להוסיף כתובת');
