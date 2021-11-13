@@ -104,29 +104,7 @@
             
         }
     }
-    function  searchPriceLessPress(){
-        var foundDrones = 0;
-        var Input = document.getElementById('myRange').value;
-        var li = document.getElementsByClassName('card');
-        
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByClassName("card-text")[0];
-            
-            if (parseInt(a.textContent)<=Input  ) {
-                li[i].style.display = "";
-                document.getElementById('noDrones').style.display = "none";
-                foundDrones += 1;
-            } else {
-                li[i].style.display = "none";
-            }
-            li[i].style.display = " ";
-    
-        }
-        if (foundDrones == 0 ) {
-            document.getElementById("noDrones").style.display = "";
-        }
-    }
-    
+   
 
 
 
