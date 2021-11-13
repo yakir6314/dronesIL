@@ -53,25 +53,34 @@
                 },
                 async: false
             });
-            geoLocation = geoLocation.results[0].geometry.location;
-            console.log(geoLocation);
-            var orderDate = new Date(order.orderDateTime);
-            var contentString = '<div style="height:45px;"> <h1 class="mapTag">' + 'הזמנה מספר ' + order.orderId + '</h1><h2 class="mapTag">מתאריך ' + formatDate(orderDate) + '</h2></div>';
-            var uluru = { lat: geoLocation.lat, lng: geoLocation.lng };
-            var info = new google.maps.InfoWindow({
-                content: contentString
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                title: "הזמנה " + order.orderId
-            });
+            if (geoLocation) {
+                if (geoLocation.results) {
+                    if (geoLocation.results[0]) {
+                        if (geoLocation.results[0].geometry) {
+                            geoLocation = geoLocation.results[0].geometry.location;
+                            console.log(geoLocation);
+                            var orderDate = new Date(order.orderDateTime);
+                            var contentString = '<div style="height:45px;"> <h1 class="mapTag">' + 'הזמנה מספר ' + order.orderId + '</h1><h2 class="mapTag">מתאריך ' + formatDate(orderDate) + '</h2></div>';
+                            var uluru = { lat: geoLocation.lat, lng: geoLocation.lng };
+                            var info = new google.maps.InfoWindow({
+                                content: contentString
+                            });
+                            var marker = new google.maps.Marker({
+                                position: uluru,
+                                title: "הזמנה " + order.orderId
+                            });
 
-            marker.setMap(map);
-            info.open({
-                anchor: marker,
-                map,
-                shouldFocus: false,
-            });
+                            marker.setMap(map);
+                            info.open({
+                                anchor: marker,
+                                map,
+                                shouldFocus: false,
+                            });
+
+                        }
+                    }
+                }
+            }
 
         })
     }
