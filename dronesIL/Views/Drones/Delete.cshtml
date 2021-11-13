@@ -224,11 +224,12 @@ p{
             </ul>
         </div>
         <div class="purchase-info">
-            <a class="btn" asp-action="Index">חזור לטבלת רחפנים</a>|
-                <a asp-action="Delete">
-                    <input type="hidden" asp-for="droneId" />
-                    <input type="submit" value="מחק רחפן" class="btn" />
-                </a>
+            <a class="btn"  style="background: #256eff;" asp-action="Index">חזור לטבלת רחפנים</a>|
+              <form asp-action="Delete">
+                                     <input type="hidden" asp-for="droneId" />
+                                     <input type="submit" value="מחק רחפן" class="btn btn-danger" /> 
+                                
+                                 </form>
         </div>
     </div>
 </div>
