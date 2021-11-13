@@ -104,31 +104,8 @@
             
         }
     }
-    function  searchPriceLessPress(){
-        var foundDrones = 0;
-        var Input = document.getElementById('myRange').value;
-        var li = document.getElementsByClassName('card');
-        
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByClassName("card-text")[0];
-            
-            if (parseInt(a.textContent)<=Input  ) {
-                li[i].style.display = "";
-                document.getElementById('noDrones').style.display = "none";
-                foundDrones += 1;
-            } else {
-                li[i].style.display = "none";
-            }
-            li[i].style.display = " ";
-    
-        }
-        if (foundDrones == 0 ) {
-            document.getElementById("noDrones").style.display = "";
-        }
-    }
     
     function passDroneDataToModel(droneId) {
-        debugger;
         var selectedDrone = model.find(f => f.droneId == droneId);
         document.getElementById('droneName').innerHTML = selectedDrone.name;
         document.getElementById('dronePrice').innerHTML = selectedDrone.price;
@@ -146,7 +123,7 @@
 </div >
 <div class="slidecontainer" id="SearchDiv2" style="padding: 20px">
     <p style="text-align: right; direction: rtl">חפש רחפו על פי מחיר ֿ</p>
-    <input type="range" min="0" max="10000" class="slider" value="5000" id="myRange" onchange="searchPriceLessPress()"
+    <input type="range" min="0" max="10000" class="slider" value="5000" id="myRange" onchange="searchKeyPress()"
            style="inline-size:100%; position: center;">
     <p style="text-align: center; direction:rtl">עד מחיר :<span id="demo"></span></p>
 </div>

@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">יצירת קשר</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">צרו איתנו קשר</a>
                     </li>
                     <li class="nav-item" style="display:none;" id="adminButton">
                         <a class="nav-link text-dark" asp-controller="Home" asp-action="admin">מערכת ניהול</a>
@@ -47,7 +47,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חפש רחפן</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="DronesSearch" asp-action="index">חנות רחפנים</a>
                     </li>
 
                     <li class="nav-item">
@@ -120,80 +120,5 @@
 
 </body>
 <footer class="page-footer font-small ">
-
-
-
-
-
-
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn">נתוני מזג אוויר</button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="closeBtn" class="close">&times;</span>
-            <h2>נתוני מזג אוויר</h2>
-            <p>
-                <div class="weatherWidget"></div>
-                <script>
-                  window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
-                  window.weatherWidgetConfig.push({
-                      selector:".weatherWidget",
-                      apiKey:"EZMLDFYE2994242A5TT5XJF58", //Sign up for your personal key
-                      location:"Tel Aviv,Israel", //Enter an address
-                      unitGroup:"metric", //"us" or "metric"
-                      forecastDays:5, //how many days forecast to show
-                      title:"Tel Aviv ", //optional title to show in the 
-                      showTitle:true, 
-                      showConditions:true
-                  });
-                 
-                  (function() {
-                  var d = document, s = d.createElement('script');
-                  s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
-                  s.setAttribute('data-timestamp', +new Date());
-                  (d.head || d.body).appendChild(s);
-                  })();
-                </script>
-            </p>
-        </div>
-
-    </div>
-
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementById("closeBtn");
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // WhUrln the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-
-
-
-
 </footer>
 </html>

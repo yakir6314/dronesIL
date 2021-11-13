@@ -94,27 +94,8 @@ function ValidateUser() {
     $("#btnlogin").val('Login');
 }
 
-//window.weatherWidgetConfig = window.weatherWidgetConfig || [];
-//window.weatherWidgetConfig.push({
-//    selector: ".weatherWidget",
-//    apiKey: "EZMLDFYE2994242A5TT5XJF58", //Sign up for your personal key
-//    location: "tel aviv,israel", //Enter an address
-//    unitGroup: "metric", //"us" or "metric"
-//    forecastDays: 5, //how many days forecast to show
-//    title: "Tel Aviv ", //optional title to show in the
-//    showTitle: true,
-//    showConditions: true
-//});
-
-//(function () {
-//    var d = document, s = d.createElement('script');
-//    s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
-//    s.setAttribute('data-timestamp', +new Date());
-//    (d.head || d.body).appendChild(s);
-//})();
-
 function goToBasket() {
-    debugger;
+    
     var cart;
     var stored = localStorage['cart'];
     if (stored) {
@@ -151,27 +132,53 @@ function RemoveFromCart(droneId) {
     goToBasket();
 
 }
-function createOrder(a) {
-
-}
 
 function searchKeyPress() {
+    
     var foundDrones = 0;
     var Input = document.getElementById('myInput').value;
+    var rangeInput = document.getElementById('myRange').value;
     Input = Input.toUpperCase();
     var li = document.getElementsByClassName('card');
 
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("span")[0];
         txtValue = a.textContent || a.innerText;
-        if ((txtValue.toUpperCase().indexOf(Input) > -1)  && li[i].style.display !== "none"){
-            li[i].style.display = "";
-            document.getElementById('noDrones').style.display = "none";
-            foundDrones += 1;
-        } else {
-            li[i].style.display = "none";
+        var priceValue = li[i].getElementsByClassName("card-text")[0];
+        if (Input && rangeInput && Input!="") {
+            if (parseInt(priceValue.textContent) <= rangeInput && (txtValue.toUpperCase().indexOf(Input) > -1)) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            }
+            else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
         }
-        li[i].style.display = " ";
+        else if (Input && Input!="") {
+            if ((txtValue.toUpperCase().indexOf(Input) > -1)) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            } else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
+        }
+        else if (rangeInput) {
+            a = li[i].getElementsByClassName("card-text")[0];
+
+            if (parseInt(a.textContent) <= rangeInput) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            } else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
+        }
+        
 
     }
     if (foundDrones == 0 ) {
