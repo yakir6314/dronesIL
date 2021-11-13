@@ -91,7 +91,8 @@ namespace dronesIL.Controllers
         [RequireAuthentication(true)]
         public string GetDaysReport()
         {
-            List<Order> orders = _context.Order.ToList();
+            DateTime minDate = new DateTime(2021, 01, 01);
+            List<Order> orders = _context.Order.Where(w=>w.orderDateTime>= minDate).ToList();
             var groupedOrders = orders.GroupBy(g => g.orderDateTime.Date.ToString("yyyy-MM-dd"), v => v).Select(s => new  { name = s.Key, value = s.Count() }).ToList();
             return JsonConvert.SerializeObject(groupedOrders);
         }
