@@ -12,6 +12,7 @@ $(document).ready(function () {
     if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user')!='null') {
         var userObject = JSON.parse(sessionStorage.getItem('user'));
         document.getElementById('btn btn-info btn-lg').style.display = 'none';
+        document.getElementById('registerButtom').style.display = 'none';
         document.getElementById('disconnect').style.display = 'initial';
         if (userObject.isAdmin == true) {
             document.getElementById('adminButton').style.display = 'block';

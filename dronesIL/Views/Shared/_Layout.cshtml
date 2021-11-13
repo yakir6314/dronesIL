@@ -54,6 +54,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Skyline" asp-action="index">סקירות רחפנים במדיה</a>
                     </li>
+                    <li class="nav-item" id="registerButtom">
+                        <a class="nav-link text-dark" asp-controller="users" asp-action="create">הרשמה</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ">
                     <span>
@@ -62,6 +65,8 @@
                     <div>
                         <button id="btn btn-info btn-lg" data-target="#loginModal" data-toggle="modal">התחבר</button>
                         <button id="disconnect" class=" button-inline mr-auto " style="display: none; margin-right: 23px !important;" onclick="disconnectUser()">התנתק</button>
+                    </div>
+                        
                         <div class="modal" id="loginModal" tabindex="2" style="z-index:1041;">
                             <div class="modal-dialog">
                                 <div class="modal-content">
