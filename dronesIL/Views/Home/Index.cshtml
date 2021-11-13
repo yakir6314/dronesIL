@@ -10,24 +10,79 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+#deck{
+margin-top: 20px;
+display:inline-grid;
+grid-template-columns: repeat(2, minmax(280px, 1fr));
 
+}
+#deck .card{
+
+  border-radius: 500px;
+  background:none;
+  border:none;
+  
+}
+.img1{
+  border-radius: 400px;
+}
+.purchase-info input,
+.purchase-info .btn{
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+}
+    .purchase-info input,
+    .purchase-info .btn{
+        border: 1.5px solid #ddd;
+        border-radius: 25px;
+        text-align: center;
+        padding: 0.45rem 0.8rem;
+        outline: 0;
+        margin-right: 0.2rem;
+        margin-bottom: 1rem;
+    }
+    .purchase-info .btn{
+        cursor: pointer;
+        color: #fff;
+    }
+    .purchase-info .btn:first-of-type{
+        background: #256eff;
+    }
+    .purchase-info .btn:last-of-type{
+        background: #f64749;
+    }
+    .purchase-info .btn:hover{
+        opacity: 0.9;
+    }
+
+
+</style>
 
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8">
-      <div >
-        <h1>אתר הרחפנים של ישראל</h1>
+      <div  style="text-align-last: center; margin-bottom:10px;">
+          <h1>אתר הרחפנים של ישראל</h1>
+           <div class="purchase-info">
+                      <a class="btn" asp-controller="DronesSearch" asp-action="Index" >תתחיל לחפש את הרחפן הבא שלך</a> |
+                      <a class="btn" asp-controller="Home" asp-action="ContactUs">תרצה לשמוע עלינו קצת ?</a>
+                  </div>
       </div>
-      <div class="content">
-               <div class="images">
-                  <img class="img1" src="photos/img1.jpeg" alt="Drone" >
-                  <img class="img1" src="photos/img2.jpeg" alt="Drone">
-                  <img class="img1" src="photos/img3.jpeg" alt="Drone">
-                  <img class="img1" src="photos/img4.jpeg" alt="Drone">
-               </div>
-            </div>
-            <script>
+<div class="card-deck" id="deck">
+
+  <div class="card">
+    <div class="images" style="border-radius: 400px;">
+      <img class="img1" src="photos/img1.jpeg" alt="Drone">
+      <img class="img1" src="photos/img2.jpeg" alt="Drone">
+      <img class="img1" src="photos/img3.jpeg" alt="Drone">
+      <img class="img1" src="photos/img4.jpeg" alt="Drone">
+    </div>
+  </div>
+  <script>
                var indexValue = 0;
                function slideShow(){
                  setTimeout(slideShow, 2500);
@@ -46,23 +101,24 @@
                slideShow();
             </script>
 
+  <div class="card">
 
-            <div class="block_video">
-              <video autoplay muted loop id="myVideo">
-                <source src="~/videos/WhatsApp Video 2021-05-29 at 20.22.42.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-              </video>
-            </div>
+    <video autoplay muted loop style="border-radius: 400px" >
+      <source src="~/videos/WhatsApp Video 2021-05-29 at 20.22.42.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
 
-    </div>
-  </div>  
+  </div>
+
+
+
 </div>
-<div id="mapsDiv">
-</div>
 
 
 
 
+
+<div id="mapsDiv"></div>
 
 
 
