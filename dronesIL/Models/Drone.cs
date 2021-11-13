@@ -25,6 +25,7 @@ namespace dronesIL.Models
         public string description { get; set; }
         [DisplayName("תמונה")]
         public string imageUrl { get; set; }
+        public bool isEnterprise { get; set; }
         public ICollection<DronesOrders> dronesOrders { get; set; }
 
     }
