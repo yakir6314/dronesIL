@@ -134,18 +134,18 @@ function RemoveFromCart(droneId) {
 }
 
 function searchKeyPress() {
-    
     var foundDrones = 0;
     var Input = document.getElementById('myInput').value;
     var rangeInput = document.getElementById('myRange').value;
     Input = Input.toUpperCase();
+    var isEnterprise = document.getElementById('isEnterprise').checked;
     var li = document.getElementsByClassName('card');
 
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("span")[0];
         txtValue = a.textContent || a.innerText;
         var priceValue = li[i].getElementsByClassName("card-text")[0];
-        if (Input && rangeInput && Input!="") {
+        if (Input && rangeInput && Input != "") {
             if (parseInt(priceValue.textContent) <= rangeInput && (txtValue.toUpperCase().indexOf(Input) > -1)) {
                 li[i].style.display = "";
                 document.getElementById('noDrones').style.display = "none";
@@ -178,7 +178,13 @@ function searchKeyPress() {
             }
             li[i].style.display = " ";
         }
-        
+        if (isEnterprise == true) {
+            var iscurrentEnterprice = li[i].getElementsByClassName('isEnterprise')[0].innerText;
+            if (iscurrentEnterprice == 'False') {
+                li[i].style.display = "none";
+                foundDrones -= 1;
+            }
+        }
 
     }
     if (foundDrones == 0 ) {
