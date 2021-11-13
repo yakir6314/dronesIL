@@ -151,27 +151,53 @@ function RemoveFromCart(droneId) {
     goToBasket();
 
 }
-function createOrder(a) {
-
-}
 
 function searchKeyPress() {
+    debugger;
     var foundDrones = 0;
     var Input = document.getElementById('myInput').value;
+    var rangeInput = document.getElementById('myRange').value;
     Input = Input.toUpperCase();
     var li = document.getElementsByClassName('card');
 
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("span")[0];
         txtValue = a.textContent || a.innerText;
-        if ((txtValue.toUpperCase().indexOf(Input) > -1)  && li[i].style.display !== "none"){
-            li[i].style.display = "";
-            document.getElementById('noDrones').style.display = "none";
-            foundDrones += 1;
-        } else {
-            li[i].style.display = "none";
+        var priceValue = li[i].getElementsByClassName("card-text")[0];
+        if (Input && rangeInput && Input!="") {
+            if (parseInt(priceValue.textContent) <= rangeInput && (txtValue.toUpperCase().indexOf(Input) > -1)) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            }
+            else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
         }
-        li[i].style.display = " ";
+        else if (Input && Input!="") {
+            if ((txtValue.toUpperCase().indexOf(Input) > -1)) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            } else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
+        }
+        else if (rangeInput) {
+            a = li[i].getElementsByClassName("card-text")[0];
+
+            if (parseInt(a.textContent) <= rangeInput) {
+                li[i].style.display = "";
+                document.getElementById('noDrones').style.display = "none";
+                foundDrones += 1;
+            } else {
+                li[i].style.display = "none";
+            }
+            li[i].style.display = " ";
+        }
+        
 
     }
     if (foundDrones == 0 ) {
