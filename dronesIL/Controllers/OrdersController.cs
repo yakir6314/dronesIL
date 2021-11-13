@@ -130,6 +130,10 @@ namespace dronesIL.Controllers
                         }
                         u.orders.Add(order);
                     }
+                    else
+                    {
+                        throw new Exception("רק יוזר מחובר יכול להוציא הזמנה");
+                    }
                     order.orderDateTime = DateTime.Now;
                     _context.Order.Add(order);
                     _context.SaveChanges();
