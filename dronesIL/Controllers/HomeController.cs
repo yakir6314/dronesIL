@@ -31,6 +31,19 @@ namespace dronesIL.Controllers
         //{
         //    _context = context;
         //}
+        [HttpPost]
+        public void disconnectUser()
+        {
+            try
+            {
+                SessionHelper.SetObjectAsJsonOnSession(HttpContext.Session, "user",null);
+                
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
         public user ValidateUser(string mail, string pass)
         {
             try

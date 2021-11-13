@@ -9,10 +9,10 @@ $(window).on('load',function() {
 });
 
 $(document).ready(function () {
-    if (sessionStorage.getItem('user') != null) {
+    if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user')!='null') {
         var userObject = JSON.parse(sessionStorage.getItem('user'));
         document.getElementById('btn btn-info btn-lg').style.display = 'none';
-        document.getElementById('btn btn-info btn-rg').style.display = 'none';
+        document.getElementById('disconnect').style.display = 'initial';
         if (userObject.isAdmin == true) {
             document.getElementById('adminButton').style.display = 'block';
         }
@@ -21,6 +21,23 @@ $(document).ready(function () {
     //    @Url.Action("Create", "Users") //load partial view here
     //});
 });
+
+function disconnectUser() {
+    var url = "/Home/disconnectUser";
+    $.ajax({
+        url: url,
+        type: "POST",
+        success: function () {
+            sessionStorage.setItem('user', null);
+            location.reload();
+
+        },
+        error: function (response) {
+            alert("error : " + response);
+        }
+
+    });
+}
 function ValidateUser() {
     var mail = $("#inputUserName")[0].value;
     var password = $("#inputPassword")[0].value;
@@ -36,6 +53,7 @@ function ValidateUser() {
                 alert("התחברת בהצלחה");
                 sessionStorage.setItem('user', JSON.stringify(data));
                 location.reload();
+                document.getElementById('disconnect').style.display = 'block';
             } else {
                 alert("שם משתמש או סיסמה לא נכונים");
             }

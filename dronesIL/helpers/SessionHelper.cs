@@ -52,7 +52,7 @@ namespace helpers.SessionHelper
         public static bool isUserAdmin(this ISession session)
         {
             bool response = false;
-            if (session.GetString("user") != null)
+            if (session.GetString("user") != null && session.GetString("user") != "null")
             {
                 string userJson = session.GetString("user");
                 user user = JsonConvert.DeserializeObject<user>(userJson);
