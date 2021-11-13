@@ -180,9 +180,9 @@ namespace dronesIL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RequireAuthentication(true)]
-        public async Task<IActionResult> Edit(int id, [Bind("id,orderDateTime,city,street,streetNum,sum,orderStatus")] Order order)
+        public async Task<IActionResult> Edit(int orderId, [Bind("orderId,orderDateTime,city,street,streetNum,Sum,orderStatus")] Order order)
         {
-            if (id != order.orderId)
+            if (orderId != order.orderId)
             {
                 return NotFound();
             }
