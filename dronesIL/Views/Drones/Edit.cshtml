@@ -3,48 +3,171 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<style>
+    .btn {
+        display: inline-grid;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        /* -webkit-user-select: none; */
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select:all;
+        background-color: #cad7e569;
+        border: 1px solid black;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+.container{
+text-align-last: right;
+}
+.container {
+    padding-top: 1.5rem;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    direction: rtl;
+}
+body{
+    line-height: 1.5;
+    text-align-last: right;
+    
+}
+.card-wrapper{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.img-display{
+    overflow: hidden;
+}
+.img-showcase{
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.img-showcase img{
+    min-width: 100%;
+}
+ .card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+        min-width: 992px;
+    }
+    .card-wrapper{
+        height: 100vh;
+        display: table;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .product-imgs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      
+                
+    }
+.product-content{
+    padding: 2rem 1rem;
+}
 
-<h1>Edit</h1>
+    #containerDrone{
+        display: inline-grid;
+        background-color: white;
+        border: 2px solid black;
+           padding: 2.5rem;
+            width: 100%;
+    }
 
-<h4>Drone</h4>
+    #textarea {
+       width: 100%;
+       height: 150px;
+       padding: 12px 20px;
+       box-sizing: border-box;
+       border-radius: 4px;
+       background-color: #f8f8f8;
+       font-size: 16px;
+       resize: none;
+     }
+     h1 {
+     text-align-last: center;
+     }
+    
+</style>
+
+<h1>עמוד עריכת רחפן</h1>
+
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="droneId" />
-           <div class="form-group">
-                          <label asp-for="name" class="control-label">שם רחפן </label>
-                          <input asp-for="name" class="form-control" />
-                          <span asp-validation-for="name" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-                          <label asp-for="price" class="control-label">מחיר רחפן</label>
-                          <input asp-for="price" class="form-control" />
-                          <span asp-validation-for="price" class="text-danger"></span>
-                      </div>
-                      
-                      <div class="form-group">
-                          <label asp-for="description" class="control-label">תיאור הרחפן</label>
-                          <input asp-for="description" class="form-control" />
-                          <span asp-validation-for="description" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-                          <label asp-for="imageUrl" class="control-label">קישור תמונת רחפן</label>
-                          <input asp-for="imageUrl" class="form-control"/>
-                          <span asp-validation-for="imageUrl" class="text-danger"></span>
-                          
-                      </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+<div class = "card-wrapper">
+    <div class="card">
+           <div class = "product-imgs">
+                <div class = "img-display">
+                    <div class = "img-showcase">
+                        <img src="@Model.imageUrl" alt="@Model.name">
+                    </div>
+                </div>
             </div>
-        </form>
+        <!-- card left -->
+        <div class="product-content">
+            <div id="containerForm">
+             <form asp-action="Edit">
+                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                         <input type="hidden" asp-for="droneId" />
+                        <div class="form-group">
+                        <label asp-for="name" class="control-label">שם רחפן </label>
+                        <input asp-for="name" class="form-control"/>
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="price" class="control-label">מחיר רחפן</label>
+                        <input asp-for="price" class="form-control"/>
+                        <span asp-validation-for="price" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="description" class="control-label">תיאור הרחפן</label>
+                        <input id="textarea" asp-for="description" class="form-control"/>
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="imageUrl" class="control-label">קישור תמונת רחפן</label>
+                        <input asp-for="imageUrl" class="form-control"/>
+                        <span asp-validation-for="imageUrl" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="שמור שינויים" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        </div>
+
+    <div style="text-align-last: center">
+        <a class="btn" style="position: center;" asp-action="Index">חזור לרשימת הרחפנים</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

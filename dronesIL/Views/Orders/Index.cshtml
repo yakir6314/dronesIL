@@ -4,37 +4,70 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+<style>
+    table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+        content: " \25B4\25BE" 
+    }
+    .btn {
+        display: inline-grid;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        /* -webkit-user-select: none; */
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select:all;
+        background-color: #cad7e569;
+        border: 1px solid black;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    tbody {
+    text-align: center;
+    border:  1px solid gray;
+    }
+     .table thead th {
+         vertical-align: bottom;
+         border-bottom: 2px solid #dee2e6;
+         text-align: center;
+         background-color: #cad7e5;
+     }
+    </style>
+<h1>ניהול הזמנות</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+<table class="table sortable">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.orderDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.city)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.streetNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.orderStatus)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orderDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.streetNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.orderStatus)
+        </th>
+        <th></th>
+        
+    </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
+    <tbody >
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.orderDateTime)
@@ -54,12 +87,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.orderStatus)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.orderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.orderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.orderId">Delete</a>
+
+            <td class="col-sm-3">
+                <a class="btn" asp-action="Edit"  asp-route-id="@item.orderId">עריכה</a> |
+                 <a class="btn" asp-action="Details" asp-route-id="@item.orderId">פרטים נוספים</a> |
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+
+
+

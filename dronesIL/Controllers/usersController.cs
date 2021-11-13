@@ -103,7 +103,7 @@ namespace dronesIL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RequireAuthentication(true)]
-        public async Task<IActionResult> Edit(int id, [Bind("userId,firstName,lastName,mail,phoneNumber,password")] user user)
+        public async Task<IActionResult> Edit(int id, [Bind("userId,firstName,lastName,mail,phoneNumber,password,isAdmin")] user user)
         {
             user.lastUpdateDate = DateTime.Now;
             if (id != user.userId)
