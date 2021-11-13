@@ -51,7 +51,7 @@ namespace dronesIL.Controllers
         }
 
         // GET: users/Create
-        [RequireAuthentication(true)]
+
         public IActionResult Create()
         {
             return PartialView();
@@ -62,8 +62,8 @@ namespace dronesIL.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RequireAuthentication(true)]
-        public async Task<IActionResult> Create([Bind("userId,firstName,lastName,mail,phoneNumber,password")] user user)
+
+        public async Task<IActionResult> Create([Bind("firstName,lastName,mail,phoneNumber,password")] user user)
         {
             user.createDate = DateTime.Now;
             user.lastUpdateDate = DateTime.Now;
@@ -77,7 +77,7 @@ namespace dronesIL.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View("../home/index");
         }
 
         // GET: users/Edit/5
