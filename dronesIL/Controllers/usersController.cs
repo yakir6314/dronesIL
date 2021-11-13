@@ -67,7 +67,11 @@ namespace dronesIL.Controllers
         {
             user.createDate = DateTime.Now;
             user.lastUpdateDate = DateTime.Now;
-
+            var dbUser = _context.user.Where(w => w.mail == user.mail || w.phoneNumber==user.phoneNumber).FirstOrDefault();
+            if (dbUser != null)
+            {
+                throw new Exception("מייל זה כבר קיים");
+            }
 
 
 
@@ -106,10 +110,7 @@ namespace dronesIL.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("userId,firstName,lastName,mail,phoneNumber,password,isAdmin")] user user)
         {
             user.lastUpdateDate = DateTime.Now;
-            if (id != user.userId)
-            {
-                return NotFound();
-            }
+            user.userId = id;
 
             if (ModelState.IsValid)
             {

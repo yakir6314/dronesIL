@@ -68,6 +68,11 @@ namespace dronesIL.Controllers
             return View();
         }
         [RequireAuthentication(false)]
+        public IActionResult About()
+        {
+            return View();
+        }
+        [RequireAuthentication(false)]
         public IActionResult ordersMap()
         {
             return View();
