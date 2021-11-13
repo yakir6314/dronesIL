@@ -61,7 +61,7 @@ namespace dronesIL.Controllers
         [HttpGet]
         public List<Order> GetAllOrdersForMaps()
         {
-            List<Order> addresses = _context.Order.OrderByDescending(o=>o.orderId).Take(10).ToList();
+            List<Order> addresses = _context.Order.OrderByDescending(o=>o.orderId).Take(50).ToList();
             return addresses;
 
         }

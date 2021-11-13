@@ -34,6 +34,7 @@
         return formated;
     }
     function initMap() {
+        debugger;
         var addresses = getGeolocation()
         var geoLocation;
         map = new google.maps.Map(document.getElementById("mapsDiv"), {
@@ -61,7 +62,7 @@
             });
             var marker = new google.maps.Marker({
                 position: uluru,
-                title: "סניף תל אביב, דרך חיים ברלב 158"
+                title: "הזמנה " + order.orderId
             });
 
             marker.setMap(map);

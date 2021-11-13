@@ -1,56 +1,191 @@
-﻿@model dronesIL.Models.user
+﻿
+@model dronesIL.Models.user
+
 
 @{
-    ViewData["Title"] = "ערוך";
+    ViewData["Title"] = "Create";
 }
 
-<h1>ערוך</h1>
+<style>
+    .btn {
+        display: inline-grid;
+        font-weight: 400;
+        border-radius: 25px;
+        text-align: center;
+        vertical-align: middle;
+        /* -webkit-user-select: none; */
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select:all;
+        background: #2946ff;
+        border: 1px solid black;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: white;
+    }
+.container{
+text-align-last: right;
+}
+.container {
+    padding-top: 1.5rem;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    direction: rtl;
+}
+body{
+    line-height: 1.5;
+    text-align-last: right;
+    
+}
+.card-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.img-display{
+    overflow: hidden;
+}
+.img-showcase{
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.img-showcase img{
+    min-width: 100%;
+}
+ .card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+ 
+    }
+    .card-wrapper{
+        height: 100vh;
+        display: table;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .product-imgs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      
+                
+    }
+.product-content{
+    padding: 2rem 1rem;
+}
 
-<h4>user</h4>
+    #containerDrone{
+        display: inline-grid;
+        background-color: white;
+        border: 2px solid black;
+           padding: 2.5rem;
+            width: 100%;
+    }
+
+    #textarea {
+       width: 100%;
+       height: 150px;
+       padding: 12px 20px;
+       box-sizing: border-box;
+       border-radius: 4px;
+       background-color: #f8f8f8;
+       font-size: 16px;
+       resize: none;
+     }
+     h1 {
+     text-align-last: center;
+     }
+    
+</style>
+
+
+
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="userId" />
-            <div class="form-group">
-                <label asp-for="firstName" class="control-label"></label>
-                <input asp-for="firstName" class="form-control" />
-                <span asp-validation-for="firstName" class="text-danger"></span>
+ <h1>עמוד עריכת רחפן</h1>
+<div class="card-wrapper">
+      
+    <div class="card">
+        <div class="product-imgs">
+            <div class="img-display">
+                <div class="img-showcase">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="lastName" class="control-label"></label>
-                <input asp-for="lastName" class="form-control" />
-                <span asp-validation-for="lastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="mail" class="control-label"></label>
-                <input asp-for="mail" class="form-control" />
-                <span asp-validation-for="mail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="phoneNumber" class="control-label"></label>
-                <input asp-for="phoneNumber" class="form-control" />
-                <span asp-validation-for="phoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="password" class="control-label"></label>
-                <input asp-for="password" class="form-control" />
-                <span asp-validation-for="password" class="text-danger"></span>
+        </div>
+        <!-- card left -->
+        <div class="product-content">
+            <div id="containerForm">
+                <form asp-controller="users" asp-action="edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="firstName" class="control-label">שם פרטי </label>
+                        <input asp-for="firstName" class="form-control"/>
+                        <span asp-validation-for="firstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="lastName" class="control-label">שם משפחה</label>
+                        <input asp-for="lastName" class="form-control"/>
+                        <span asp-validation-for="lastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="mail" class="control-label label">כתובת מייל:</label>
+                        <input asp-for="mail" class="form-control"/>
+                        <span asp-validation-for="mail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="phoneNumber" class="control-label label">מספר טלפון:</label>
+                        <input asp-for="phoneNumber" class="form-control"/>
+                        <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="password" class="control-label label">סיסמה:</label>
+                        <input asp-for="password" class="form-control"/>
+                        <span asp-validation-for="password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" >
+                        <label asp-for="isAdmin" class="control-label label">הרשאות מנהל:</label>
+                        <select asp-for="isAdmin" class="form-control">
+                            <option value="true">כן</option>
+                            <option value="false">לא</option>
+                        </select>
+                        <span asp-validation-for="isAdmin" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="שמור שינויים" class="btn btn-primary"/>
+                    </div>
+                </form>
             </div>
 
 
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
+     <div style="text-align-last: center">
+            <a class="btn" style="position: center; background: #256eff; " asp-action="Index">חזור לרשימת הרחפנים</a>
+        </div>
+
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

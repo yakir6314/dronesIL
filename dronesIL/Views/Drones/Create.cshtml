@@ -10,9 +10,9 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" asp-controller="Drones">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="droneId" />
+            <!--<input type="hidden" asp-for="droneId" />-->
             <div class="form-group">
                 <label asp-for="name" class="control-label">שם רחפן </label>
                 <input asp-for="name" class="form-control" />
