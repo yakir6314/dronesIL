@@ -1,0 +1,108 @@
+<link rel="stylesheet" runat="server" media="screen" href="~/css/styles.css" />
+
+<style>
+    #map {
+        height: 100%;
+  
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .mapTag {
+        font-size: 12px;
+        height: 14px;
+        font-weight: 100;
+        width:240px;
+        text-align:center;
+    }
+
+</style>
+<script>
+    function formatDate(date) {
+        var formated = date.toLocaleString('he-IL',
+            {
+                weekday: 'long',
+                day: 'numeric',
+                year: 'numeric',
+                month: 'long',
+                hour: 'numeric',
+                minute: 'numeric',
+            });
+        return formated;
+    }
+    function initMap() {
+        var addresses = getGeolocation()
+        var geoLocation;
+        map = new google.maps.Map(document.getElementById("mapsDiv"), {
+            center: { lat: 32.045529563351494, lng: 34.805553315631585 },
+            zoom: 11,
+        });
+
+        $.each(addresses, function (index, order) {
+            var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + order.street + '+' + order.streetNumber + '+' + order.city + '+' + 'ישראל&key=AIzaSyDkOfgW6xg8gZu6DQ4ym1Tn3ylPXjxbPdo';
+            $.ajax({
+                url: url,
+                success: function (response) {
+
+                    geoLocation = response;
+                },
+                async: false
+            });
+            geoLocation = geoLocation.results[0].geometry.location;
+            console.log(geoLocation);
+            var orderDate = new Date(order.orderDateTime);
+            var contentString = '<div style="height:45px;"> <h1 class="mapTag">' + 'הזמנה מספר ' + order.orderId + '</h1><h2 class="mapTag">מתאריך ' + formatDate(orderDate) + '</h2></div>';
+            var uluru = { lat: geoLocation.lat, lng: geoLocation.lng };
+            var info = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                title: "סניף תל אביב, דרך חיים ברלב 158"
+            });
+
+            marker.setMap(map);
+            info.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+
+        })
+    }
+    function getGeolocation() {
+        var baseUrl = window.location.protocol + "//" + window.location.host + "/";
+        var url = baseUrl + "Orders/GetAllOrdersForMaps";
+        var orders;
+        $.ajax({
+            url: url,
+            success: function (response) {
+                
+                orders = response;
+            },
+            async: false
+        });
+        return orders;
+
+
+    }
+</script>
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYreq0os9tStjgxC99miiabgVWZHDllpM&callback=initMap">
+</script>
+<div>
+    <div id="mapsDiv" style="position:relative;width:1000px;height:750px ;margin-left:50%">
+    </div>
+
+    <div >
+        <a>טלפון ליצירת קשר :052-745-7717</a>
+    </div>
+</div>
+
+
+
+
+

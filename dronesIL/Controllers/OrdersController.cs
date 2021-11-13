@@ -122,7 +122,12 @@ namespace dronesIL.Controllers
                     user u = SessionHelper.GetObjectFromJsoFromSessionn<user>(HttpContext.Session, "user");
                     if (u != null)
                     {
-                        order.user = u;
+                        u = _context.user.Where(w => w.userId == u.userId).FirstOrDefault();
+                        if (u.orders == null)
+                        {
+                            u.orders = new List<Order>();
+                        }
+                        u.orders.Add(order);
                     }
                     order.orderDateTime = DateTime.Now;
                     _context.Order.Add(order);
@@ -132,7 +137,7 @@ namespace dronesIL.Controllers
                     _context.SaveChanges();
                 }
                 DronesMail mail = new DronesMail("dronesIlSite@gmail.com", "yakir6314@gmail.com", "אישור הזמנה מאתר הרחפנים של ישראל");
-                mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעכב אנא היכנס למערכת הניהול\nתודה");
+                Task.Run(() => mail.sendMail($"היי\nהתקבלה הזמנה חדשה מאתר הרחפנים\nמספר הזמנה {order.orderId}\nלמעקב אנא היכנס למערכת הניהול\nתודה")); 
 
                 return "seuccess";
             }
