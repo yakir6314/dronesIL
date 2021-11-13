@@ -202,9 +202,22 @@ footer {
     border-color: black;
     box-shadow: 10px 10px 20px black;
     text-align: right;
-    ;
 }
-
+.checkBoxEdit {
+    vertical-align: bottom;
+    width: 20px;
+    display: inline;
+    margin-right: 10px;
+}
+.checkBoxSearchDiv {
+    font-size: 21px;
+    width: 100%;
+    text-align: right;
+}
+.checkBoxSearchInput {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
 /* The Close Button */
 .close {
     color: #aaaaaa;

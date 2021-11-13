@@ -126,6 +126,10 @@
     <input type="range" min="0" max="10000" class="slider" value="5000" id="myRange" onchange="searchKeyPress()"
            style="inline-size:100%; position: center;">
     <p style="text-align: center; direction:rtl">עד מחיר :<span id="demo"></span></p>
+    <div class="checkBoxSearchDiv">
+        <label for="isEnterprise">האם תעשייתי</label>
+        <input id="isEnterprise" class="checkBoxSearchInput" type="checkbox" value="no" onchange="searchKeyPress()" />
+    </div>
 </div>
 <script>
 var slider = document.getElementById("myRange");
@@ -160,6 +164,7 @@ slider.oninput = function() {
                 
                 <span style="text-align-all:center; direction: rtl">מחיר רחפן בשקלים :</span>
                 <div class="card-text" id="price" style="text-align-all:center; direction: rtl">@d.price</div>
+                <div id="isEnterprise" class="isEnterprise" style="display:none;">@d.isEnterprise</div>
                 <div class="card-footer">
                     <button class="modal-info" id="@d.droneId" data-id="@d.droneId"  data-target="#droneModal"  data-toggle="modal" onclick="passDroneDataToModel( @d.droneId )" >
                         מידע נוסף
